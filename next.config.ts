@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
       // Local r2 bucket
       {
         protocol: "https",
-        hostname: "pub-b2cd6b49f6f042109b750b07ab45d1ff.r2.dev",
+        hostname: process.env.NEXT_PUBLIC_API_URL?.split('https://')[1] ?? "",
         pathname: "/**", // Allow all images from this domain
       },
       // Production r2 bucket

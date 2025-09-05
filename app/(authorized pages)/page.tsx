@@ -8,12 +8,12 @@ import RightSection from './RightSection';
 const page = async () => {
     return (
         <div className='flex justify-center pt-4 gap-5'>
-            <LeftSection/>
+            {/* <LeftSection/>
             <div className="middle">
                 <HomePageTag />
                 <PostList postLink={`${process.env.NEXT_PUBLIC_API_URL}/api/post/get`} />
             </div>
-            <RightSection/>
+            <RightSection/> */}
         </div>
     )
 }

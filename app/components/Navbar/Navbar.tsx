@@ -117,43 +117,6 @@ const Navbar: React.FC = () => {
 
         </div>
       </div>
-      
-      {/* Mobile Menu */}
-      {/* {isMobileMenuOpen && (
-        <div className="md:hidden">
-
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <div className="relative w-full p-2">
-              <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400" />
-              </div>
-              <input
-                type="text"
-                className="block w-full bg-gray-100 border border-transparent rounded-full py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 focus:bg-white"
-                placeholder="Search..."
-              />
-            </div>
-            <Link href={"/"} className="flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50"><Users /> Friends</Link>
-            <Link href={"/"} className="flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50"><Bell /> Notifications</Link>
-            <Link href={"/"} className="flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50"><MessageSquare /> Chat</Link>
-          </div>
-
-          <div className="pt-4 pb-3 border-t border-gray-200">
-            <div className="flex items-center px-5">
-              <img className="h-10 w-10 rounded-full object-cover" src={user.avatar!} alt={user.username} />
-              <div className="ml-3">
-                <p className="text-base font-medium text-gray-800">{user.username}</p>
-              </div>
-            </div>
-            <div className="mt-3 px-2 space-y-1">
-              <Link href={"/"} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Your Profile</Link>
-              <Link href={"/"} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Settings</Link>
-              <Link href={"/"} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Sign out</Link>
-            </div>
-          </div>
-
-        </div>
-      )} */}
     </nav>
   );
 };

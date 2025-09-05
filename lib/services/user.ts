@@ -2,6 +2,7 @@ import { getBackendJwtToken } from "@/lib/auth";
 import { Post } from "@/lib/models/post";
 import { User, RecommendedUsers } from "@/lib/models/user";
 import { apiAgent } from "../api-agent";
+import { defaultUserAvatar } from "../constants";
 
 async function fetchProfileUserFromServer (userId: number) : Promise<{user: User; posts: Post[]} | null> {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/profile/get`, {
@@ -58,7 +59,9 @@ export const updateUserProfileOnServer = async (newProfile: Partial<User>) => {
     }
 }
 
-export function getUserAvatarLink(userId: number, updatedAt?: string) {
+export function getUserAvatarLink(userId?: number, updatedAt?: string) {
+    if(!userId) return defaultUserAvatar;
+
     const baseAvatarUrl = `${process.env.NEXT_PUBLIC_R2_PUBLIC_URL}/user/${userId}/avatar/avatar.png`;
     return updatedAt ? `${baseAvatarUrl}?${new Date(updatedAt).getTime()}` : baseAvatarUrl;
 }

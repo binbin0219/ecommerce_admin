@@ -17,10 +17,10 @@ const PasswordInput = ({password, setPassword, isPasswordValid, setStep, setIsPa
         const hasLetter = /[A-Za-z]/.test(password);
         const hasDigit = /\d/.test(password);
         const noSpaces = !/\s/.test(password);
-        const isLongEnough = password.length > 6;
+        const isLengthCorrect = password.length > 6 && password.length <= 20;
         const isNotEmpty = password.trim().length > 0;
 
-        return hasLetter && hasDigit && noSpaces && isLongEnough && isNotEmpty;
+        return hasLetter && hasDigit && noSpaces && isLengthCorrect && isNotEmpty;
     }
 
 
