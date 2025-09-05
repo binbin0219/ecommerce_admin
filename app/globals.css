@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+:root {
+  --font-poppins: 'Poppins', sans-serif;
+  --font-fugaz: 'Fugaz One', cursive;
+}
+
+html.login-bg {
+  background-image: url("/assets/login-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body {
+  font-family: var(--font-poppins);
+}
+
+/* Modern Dropdown */
+.dropdown {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+
+  .dropdown-toggle {
+    cursor: pointer;
+  }
+
+  .dropdown-toggle:hover,
+  .dropdown-toggle:focus {
+    /* background-color: #f3f4f6; */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
+    min-width: 180px;
+    z-index: 10;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .dropdown-item {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    color: #374151;
+    background-color: transparent;
+    transition: background-color 0.2s, color 0.2s;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f3f4f6;
+    color: #111827;
+  }
+
+  .dropdown-item.active {
+    background-color: #4f46e5;
+    color: white;
+  }
+
+  .show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.hover:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+.hover-soft {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.list-item-general {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: #374151;
+  background-color: transparent;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  width: 100%;
+}
+.list-item-general:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 5em;
+  padding: .8em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #4f46e5;
+  --_m: 
+    conic-gradient(#0000 10%,#000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {to{transform: rotate(1turn)}}
+
+.skeleton {
+  background: #ccc;
+  border-radius: 4px;
+  width: 100%;
+  animation: loading 1.5s infinite linear;
+}
+
+@keyframes loading {
+  0% {
+      background-color: #e0e0e0;
+  }
+  50% {
+      background-color: #d6d6d6;
+  }
+  100% {
+      background-color: #e0e0e0;
+  }
+}
+
+.button-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.unselectable {
+  pointer-events: none;
+}
+
+.img-hover-effect {
+  position: relative;
+}
+
+.img-hover-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(128, 128, 128, 0.4);
+  transition: background 0.3s ease;
+}
+
+.img-hover-effect:hover::after {
+  background: rgba(128, 128, 128, 0.4);
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
