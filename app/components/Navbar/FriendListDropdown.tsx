@@ -33,7 +33,10 @@ const FriendListDropdown = () => {
         setIsOpen={(isOpen: boolean) => setIsOpen(isOpen)}
         toggleButton={
             <DynamicTooltip text='Friends' className='flex'>
-                <button className='dropdown-toggle p-2 rounded-full hover:bg-gray-100 text-gray-500 hover:text-indigo-600 transition-colors' onClick={() => setIsOpen(!isOpen)}>
+                <button 
+                className="nav-bar-btn"
+                onClick={() => setIsOpen(!isOpen)}
+                >
                     <IconUsers className='h-6 w-6'/>
                 </button>
             </DynamicTooltip>

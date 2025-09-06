@@ -132,7 +132,7 @@ const Page = () => {
                     </form>
                     <div className="alreadyHaveAnAccount">
                         <p>Don&apos;t have an account?</p>
-                        <a href="/signup" className='text-indigo-600 hover:opacity-50'>Go to Sign Up &gt;&gt;</a>
+                        <a href="/signup" className='text-primary hover:opacity-50'>Go to Sign Up &gt;&gt;</a>
                     </div>
                 </div>
             </div>

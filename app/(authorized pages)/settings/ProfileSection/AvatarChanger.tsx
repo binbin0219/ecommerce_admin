@@ -130,7 +130,15 @@ const AvatarChanger = ({avatar, updateUserData} : Props) => {
                 />
             )}
             <div className="flex flex-col gap-3">
-                <label htmlFor="upload_img_input" className="flex gap-2 items-center rounded-lg px-3 py-2 border-2 border-green-300 bg-green-100 text-sm text-green-600 hover:bg-green-200 cursor-pointer">
+                <label 
+                htmlFor="upload_img_input" 
+                className="
+                    flex gap-2 items-center rounded-lg px-3 py-2
+                    border-2 border-green-300 bg-green-100 text-sm text-green-600
+                    hover:bg-green-200 cursor-pointer
+                    dark:border-green-700 dark:bg-green-900 dark:text-green-300 dark:hover:bg-green-800
+                "
+                >
                     <IconUpload/>
                     Upload image
                     <input onInput={() => handleImgUpload()} ref={avatarInputRef} id="upload_img_input" accept="image/jpeg, image/png" type="file" name="avatar" className="hidden"/>
@@ -146,7 +154,12 @@ const AvatarChanger = ({avatar, updateUserData} : Props) => {
                     </>
                 )}
                 loadingText='Generating...'
-                className='flex gap-2 items-center rounded-lg px-3 py-2 border-2 border-indigo-300 bg-indigo-100 text-sm text-indigo-600 hover:bg-indigo-200'
+                className="
+                    flex gap-2 items-center rounded-lg px-3 py-2
+                    border-2 border-indigo-300 bg-indigo-100 text-sm text-indigo-600
+                    hover:bg-indigo-200 cursor-pointer
+                    dark:border-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 dark:hover:bg-indigo-800
+                "     
                 >
                 </LoadingButton>
             </div>

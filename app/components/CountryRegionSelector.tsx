@@ -19,7 +19,7 @@ const CountryRegionSelector: React.FC<CountryRegionSelectorProps> = ({
     return (
         <div className="flex w-full justify-between">
             <div className="w-[45%]">
-                <label htmlFor="country_selector" className="block font-bold">Country</label>
+                <label htmlFor="country_selector" className="block font-bold text-textPri">Country</label>
                 <select
                 id="country_selector"
                 name="country"
@@ -28,7 +28,7 @@ const CountryRegionSelector: React.FC<CountryRegionSelectorProps> = ({
                     onCountryChange(e.target.value);
                     onRegionChange("");
                 }}
-                className="crs-country px-3 py-2 border-2 border-slate-200 rounded-lg w-full"
+                className="crs-country px-3 py-2 border-2 border-borderPri bg-bgSec text-textPri rounded-lg w-full"
                 >
                 <option value="">Select Country</option>
                 {countries.map((country) => (
@@ -40,14 +40,14 @@ const CountryRegionSelector: React.FC<CountryRegionSelectorProps> = ({
             </div>
 
             <div className="w-[45%]">
-                <label htmlFor="region_selector" className="block font-bold">Region</label>
+                <label htmlFor="region_selector" className="block font-bold text-textPri">Region</label>
                 <select
                 id="region_selector"
                 name="region"
                 value={selectedRegion}
                 onChange={(e) => onRegionChange(e.target.value)}
                 disabled={!selectedCountry}
-                className="px-3 py-2 border-2 border-slate-200 rounded-lg w-full"
+                className="px-3 py-2 border-2 border-borderPri bg-bgSec text-textPri rounded-lg w-full"
                 >
                 <option value="">Select Region</option>
                 {regions.map((region) => (

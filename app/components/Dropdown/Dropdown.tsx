@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, cloneElement } from "react";
+import './styles.css';
 
 type Props = {
     toggleButton: React.ReactElement<{ onClick?: () => void }>;

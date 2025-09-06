@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import FriendListDropdown from './FriendListDropdown';
 import NotificationDropdown from './NotificationDropdown';
-import ChatWindow from './ChatWindow/ChatWindow';
 import UserIcon from '../UserIcon/UserIcon';
 import UserProfileLink from '../Link/UserProfileLink';
 import { IconLogout, IconMenu, IconSettings, IconUserScan, IconX } from '@tabler/icons-react';
@@ -15,6 +14,8 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useDialogContext } from '@/context/DialogContext';
 import Dropdown from '../Dropdown/Dropdown';
 import SearchBar from './SearchBar';
+import ThemeToggle from '../ThemeToggle';
+import SmartImage from '../SmartImage';
 
 const Navbar: React.FC = () => {
   const user = useSelector((state: RootState) => state.currentUser)!;
@@ -49,13 +50,22 @@ const Navbar: React.FC = () => {
   }
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className="shadow-sm sticky top-0 z-50 bg-bgSec">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Left Side: Logo */}
           <div className="flex-shrink-0">
-            <Link href={"/"} className="text-4xl me-12 text-indigo-600 cursor-pointer hover:text-indigo-500 transition-colors duration-300" style={{ fontFamily: "fugaz one" }}>
-              Blogify
+            <Link 
+            href={"/"} 
+            className="text-4xl me-12 text-primary cursor-pointer hover:text-primary transition-colors duration-300 flex items-center" 
+            style={{ fontFamily: "fugaz one" }}
+            >
+              <SmartImage
+              src='/assets/logo/logo.png'
+              width={65}
+              height={65}
+              />
+              {/* LuckyWin */}
             </Link>
           </div>
 
@@ -68,14 +78,15 @@ const Navbar: React.FC = () => {
 
             <NotificationDropdown/>
 
-            <ChatWindow/>
+            {/* <ChatWindow/> */}
+            <ThemeToggle/>
 
             <Dropdown
             toggleButton={(
               <div className='relative'>
                 <div className="absolute bottom-0 right-0 w-[10px] h-[10px] bg-green-400 rounded-full me-[3px] z-10"></div>
                 <UserIcon
-                className={`${isProfileMenuOpen && 'outline-none ring-2 ring-offset-2 ring-indigo-500'}`}
+                className={`${isProfileMenuOpen && 'outline-none ring-2 ring-offset-2 ring-primary'}`}
                 userId={user.id} 
                 updatedAt={user.updatedAt} 
                 navigateToUserProfile={false} 

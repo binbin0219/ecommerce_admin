@@ -16,7 +16,7 @@ const DetailsChanger = ({user, updateUserData}: Props) => {
     return (
         <div className="flex flex-col mt-8 gap-5">
             <div>
-                <label htmlFor="username_input" className="block font-bold">Username</label>
+                <label htmlFor="username_input" className="block font-bold text-textPri">Username</label>
                 <InputField
                 value= {user?.username ?? ""}
                 setter={(value: string) => updateUserData("username", value)}
@@ -31,7 +31,7 @@ const DetailsChanger = ({user, updateUserData}: Props) => {
             </div>
             <div className="flex w-full justify-between">
                 <div className="w-[45%]">
-                    <label htmlFor="first_name_input" className="block font-bold">First name</label>
+                    <label htmlFor="first_name_input" className="block font-bold text-textPri">First name</label>
                     <InputField
                     value= {user?.firstName ?? ""}
                     setter={(value: string) => updateUserData("firstName", value)}
@@ -44,7 +44,7 @@ const DetailsChanger = ({user, updateUserData}: Props) => {
                     />
                 </div>
                 <div className="w-[45%]">
-                    <label htmlFor="last_name_input" className="block font-bold">Last name</label>
+                    <label htmlFor="last_name_input" className="block font-bold text-textPri">Last name</label>
                     <InputField
                     value= {user?.lastName ?? ""}
                     setter={(value: string) => updateUserData("lastName", value)}
@@ -58,17 +58,32 @@ const DetailsChanger = ({user, updateUserData}: Props) => {
                 </div>
             </div>
             <div>
-                <label className="block font-bold">Gender</label>
+                <label className="block font-bold text-textPri">Gender</label>
                 <div id="gender_radio_container" data-gender={user?.gender} className="gender-radio-container flex w-full justify-between mt-2">
                     <div className="w-[45%]">
-                        <label htmlFor="gender_radio_male" className="gender-radio-male px-3 py-2 border-2 border-sky-300 rounded-lg bg-sky-100 text-sky-600 hover:bg-sky-200 cursor-pointer inline-flex w-full">
+                        <label 
+                        htmlFor="gender_radio_male" 
+                        className="
+                            gender-radio-male px-3 py-2 border-2 border-sky-300 rounded-lg
+                            bg-sky-100 text-sky-600 hover:bg-sky-200
+                            cursor-pointer inline-flex w-full
+                            dark:border-sky-700 dark:bg-sky-900 dark:text-sky-300 dark:hover:bg-sky-800
+                        ">
                             <IconGenderMale />
                             Male
                             <input id="gender_radio_male" onChange={(e) => updateUserData("gender", e.target.checked ? "male" : "female")} type="radio" name="gender" value="Male" className="gender-radio hidden"/>
                         </label>
                     </div>
                     <div className="w-[45%]">
-                        <label htmlFor="gender_radio_female" className="gender-radio-female px-3 py-2 border-2 border-pink-300 rounded-lg bg-pink-100 text-pink-600 inline-flex w-full cursor-pointer hover:opacity-100 hover:bg-pink-200">
+                        <label 
+                        htmlFor="gender_radio_female" 
+                        className="
+                            gender-radio-female px-3 py-2 border-2 border-pink-300 rounded-lg
+                            bg-pink-100 text-pink-600 hover:bg-pink-200
+                            cursor-pointer inline-flex w-full
+                            dark:border-pink-700 dark:bg-pink-900 dark:text-pink-300 dark:hover:bg-pink-800
+                        "
+                        >
                             <IconGenderFemale/>
                             Female
                             <input id="gender_radio_female" onChange={(e) => updateUserData("gender", e.target.checked ? "female" : "male")} type="radio" name="gender" value="Female" className="gender-radio hidden"/>
@@ -87,8 +102,14 @@ const DetailsChanger = ({user, updateUserData}: Props) => {
             />
             <div className="flex w-full justify-between">
                 <div className="w-[45%]">
-                    <label htmlFor="relationship_status_selector" className="block font-bold">Relationship Status</label>
-                    <select onChange={(e) => updateUserData("relationshipStatus", e.target.value)} value={user?.relationshipStatus ?? ""} id="relationship_status_selector" name="relationshipStatus" className="px-3 py-2 border-2 border-slate-200 rounded-lg w-full">
+                    <label htmlFor="relationship_status_selector" className="block font-bold text-textPri">Relationship Status</label>
+                    <select 
+                    onChange={(e) => updateUserData("relationshipStatus", e.target.value)} 
+                    value={user?.relationshipStatus ?? ""} 
+                    id="relationship_status_selector" 
+                    name="relationshipStatus" 
+                    className="px-3 py-2 border-2 border-borderPri bg-bgSec text-textPri rounded-lg w-full"
+                    >
                         <option data-index="0" value="">Not Specified</option>
                         <option data-index="1" value="Single">Single</option>
                         <option data-index="2" value="Married">Married</option>
@@ -101,7 +122,7 @@ const DetailsChanger = ({user, updateUserData}: Props) => {
                     </select>
                 </div>
                 <div className="w-[45%]">
-                    <label htmlFor="occupation_selector" className="block font-bold">Occupation</label>
+                    <label htmlFor="occupation_selector" className="block font-bold text-textPri">Occupation</label>
                     <OccupationSelector 
                         setterFunction={(value: string) => updateUserData("occupation", value)} 
                         defaultValue={user?.occupation}
@@ -109,7 +130,7 @@ const DetailsChanger = ({user, updateUserData}: Props) => {
                 </div>
             </div>
             <div>
-                <label htmlFor="phone_number_input" className="block font-bold">Phone Number</label>
+                <label htmlFor="phone_number_input" className="block font-bold text-textPri">Phone Number</label>
                 <PhoneNumberInput 
                     phoneNumber={user?.phoneNumber} 
                     setterFunction={(value: PhoneNumber) => updateUserData("phoneNumber", value)} 

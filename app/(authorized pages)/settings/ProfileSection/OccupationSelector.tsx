@@ -7,7 +7,13 @@ type Props = {
 
 const OccupationSelector = ({setterFunction, defaultValue} : Props) => {
     return (
-        <select onChange={(e) => setterFunction(e.target.value)} value={defaultValue ?? ""} id="occupation_selector" name="occupation" className="px-3 py-2 border-2 border-slate-200 rounded-lg w-full">
+        <select 
+        onChange={(e) => setterFunction(e.target.value)} 
+        value={defaultValue ?? ""} 
+        id="occupation_selector" 
+        name="occupation" 
+        className="px-3 py-2 border-2 border-borderPri bg-bgSec text-textPri rounded-lg w-full"
+        >
             <option value="" data-index="0">Not Specified</option>
 
             <optgroup label="Technology & IT">

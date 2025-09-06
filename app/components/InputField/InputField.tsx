@@ -84,7 +84,7 @@ const InputField = (props: Props) => {
             onChange={(e) => handleUsernameChange(e)}
             onKeyDown= {(e) => handleKeyDown(e)}
             onPaste= {(e) => handlePaste(e)}
-            className="px-3 py-2 border-2 border-slate-200 rounded-lg w-full outline-none"
+            className="px-3 py-2 border-2 border-borderPri bg-bgSec text-textPri rounded-lg w-full outline-none"
             />
             <p ref={textLengthMessageRef} className='text-red-500 mt-2' style={{display: 'none'}}>
                 <IconAlertCircle className='me-2'/>

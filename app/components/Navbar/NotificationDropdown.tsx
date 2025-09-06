@@ -45,7 +45,7 @@ const NotificationDropdown = memo(() => {
                     data-data-loaded="false" 
                     id="notifications_btn" 
                     type="button" 
-                    className="relative p-2 rounded-full hover:bg-gray-100 text-gray-500 hover:text-indigo-600 transition-colors"
+                    className="nav-bar-btn"
                     >
                         <IconBell className='w-6 h-6'/>
                         <NotificationCounter/>

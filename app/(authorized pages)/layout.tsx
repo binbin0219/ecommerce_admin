@@ -65,10 +65,7 @@ export default async function RootLayout({
 				<Script id="global-script" strategy="beforeInteractive" src="/global.js"></Script>
 			</head>
 			<Suspense fallback={<Loading />}> 
-				<body
-					className={`antialiased`}
-					style={{ backgroundColor: "#F7F8FA" }}
-				>
+				<body className="antialiased bg-bgPri">
 					<WebSocketProvider>
 						<StoreProvider 
 							currentUser={authUserData} 

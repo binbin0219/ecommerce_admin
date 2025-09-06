@@ -144,7 +144,7 @@ const Page = () => {
             )}
             <div className="alreadyHaveAnAccount">
                 <p>Already have an account?</p>
-                <a href="/login" className='text-indigo-600 hover:opacity-50'>Go to login &gt;&gt;</a>
+                <a href="/login" className='text-primary hover:opacity-50'>Go to login &gt;&gt;</a>
             </div>
         </div>
         </>

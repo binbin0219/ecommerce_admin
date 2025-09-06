@@ -2,7 +2,7 @@ const loader = document.createElement('div');
 loader.className = 'w-full h-full flex flex-col justify-center items-center absolute start-0 top-0 text-[6px] bg-white';
 loader.innerHTML = `
     <div class="loader mb-[.5em]"></div>
-    <a href="/" class="text-[3.5em] text-indigo-600 cursor-pointer hover:text-indigo-500" style="font-family: fugaz one;">Blogify</a>
+    <a href="/" class="text-[3.5em] text-primary cursor-pointer hover:text-indigo-500" style="font-family: fugaz one;">Blogify</a>
 `;
 
 function getLoaderElement(tailwwindStyles) {
@@ -14,7 +14,7 @@ function getLoaderElement(tailwwindStyles) {
     loader.className = `w-full h-full flex flex-col justify-center items-center ${position} start-0 top-0 ${fontSize} ${marginTop} ${marginBottom} bg-white`;
     loader.innerHTML = `
         <div class="loader mb-[.5em]"></div>
-        <a href="/" class="text-[3.5em] text-indigo-600 cursor-pointer hover:text-indigo-500" style="font-family: fugaz one;">Blogify</a>
+        <a href="/" class="text-[3.5em] text-primary cursor-pointer hover:text-indigo-500" style="font-family: fugaz one;">Blogify</a>
     `;
     return loader;
 }

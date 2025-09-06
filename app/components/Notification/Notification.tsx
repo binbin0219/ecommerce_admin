@@ -220,7 +220,7 @@ const Notification = ({notification} : Props) => {
             <div className="flex flex-col gap-1 relative w-[75%]">
                 <p className="text-sm text-start">{content[notification.type]()}</p>
                 <div className="flex justify-between w-full items-end">
-                    <p className="font-semibold text-indigo-600 text-xs">{timeAgo(notification.createAt)}</p>
+                    <p className="font-semibold text-primary text-xs">{timeAgo(notification.createAt)}</p>
                     {notification.type === "LIKE" ? <LikeButtons/> : ''}
                     {notification.type === "FRIEND_REQUEST" ? <FriendRequestButtons />: ''}
                     {notification.type === "COMMENT" ? <CommentButtons />: ''}

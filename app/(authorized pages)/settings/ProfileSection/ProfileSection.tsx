@@ -117,7 +117,7 @@ const ProfileSection = () => {
 
     return (
         <>
-            <h1 className="font-extrabold text-4xl">Public Profile</h1>
+            <h1 className="font-extrabold text-4xl text-textSec">Public Profile</h1>
             <AvatarChanger
                 avatar={editingUserData?.avatar}
                 updateUserData={updateUserField}
@@ -141,8 +141,8 @@ const ProfileSection = () => {
                 loadingText='Saving...'
                 disabled={!isEdited}
                 className={`
-                    ${!isEdited ? 'bg-slate-100 border-slate-300 text-slate-600' : ''}
-                    ${isEdited ? 'bg-green-100 border-green-300 text-green-600 hover:bg-green-200' : ''}
+                    ${!isEdited ? 'bg-slate-100 border-slate-300 text-slate-600 dark:bg-slate-800 dark:border-slate-600 dark:text-slate-300' : ''}
+                    ${isEdited ? 'bg-green-100 border-green-300 text-green-600 hover:bg-green-200 dark:bg-green-900 dark:border-green-700 dark:text-green-300 dark:hover:bg-green-800' : ''}
                     border-2 px-3 py-2 rounded-lg flex gap-2 relative
                 `}
                 >
