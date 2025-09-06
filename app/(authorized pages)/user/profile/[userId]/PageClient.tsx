@@ -8,7 +8,6 @@ import SectionToggles from './SectionToggles';
 import './style.css'
 import { addUser } from '@/redux/slices/userSlice';
 import ChatButton from '@/components/ChatButton';
-import PostSection from './sections/PostSection';
 import { setPosts } from '@/redux/slices/postSlice';
 import FriendsSection from './sections/FriendsSection';
 import UserDescriptionEditBtn from '@/components/Buttons/UserDescriptionEditBtn';
@@ -93,7 +92,6 @@ const PageClient = ({profileUser} : Props) => {
 
                 <section id='userProfilePage' data-section={currentSection} className="space-y-4 relative min-w-0">
                     <SectionToggles setCurrentSection={setCurrentSection}/>
-                    <PostSection profileUser={profileUser}/>
                     <FriendsSection profileUser={profileUser!}/>
                     <div id="photos_section" className="w-full mt-4 gap-8 flex flex-col hidden">
             
