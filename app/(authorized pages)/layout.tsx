@@ -36,27 +36,29 @@ export default async function RootLayout({
 }>) {
 	let authUserData: User | null = null;
 
-	try {
-		const cookieStore = await cookies();
-		const nextJwtCookie = cookieStore.get(process.env.NEXT_JWT_TOKEN_NAME!);
-		const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`, {
-			// cache: "force-cache",
-			cache: "no-cache",
-			method: "GET",
-			headers: {
-				Cookie: nextJwtCookie ? `${process.env.JWT_TOKEN_NAME}=${nextJwtCookie.value}` : ''
-			},
-			credentials: "include",
-		});
+	if(process.env.ENABLE_AUTH === "true") {
+		try {
+			const cookieStore = await cookies();
+			const nextJwtCookie = cookieStore.get(process.env.NEXT_JWT_TOKEN_NAME!);
+			const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`, {
+				// cache: "force-cache",
+				cache: "no-cache",
+				method: "GET",
+				headers: {
+					Cookie: nextJwtCookie ? `${process.env.JWT_TOKEN_NAME}=${nextJwtCookie.value}` : ''
+				},
+				credentials: "include",
+			});
 
-		if (!response.ok) {
-			if(response.status === 401) redirect('/login');
-			throw new Error();
-		};
+			if (!response.ok) {
+				if(response.status === 401) redirect('/login');
+				throw new Error();
+			};
 
-		authUserData = await response.json();
-	} catch (e) {
-		console.log("Failed to authenticate user :" + e);
+			authUserData = await response.json();
+		} catch (e) {
+			console.log("Failed to authenticate user :" + e);
+		}
 	}
 
 	return (
