@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-poppins: 'Poppins', sans-serif;
+  --font-fugaz: 'Fugaz One', cursive;
+  --color-primary: #06B6D4 !important;
+  --bg-primary: #f7f8fa;
+  --bg-secondary: #ffffff;
+  --bg-hover-primary: #f3f4f6;
+  --border-primary: #e5e7eb;
+  --text-primary: #374151;
+  --text-secondary: #000000;
+  --skeleton-base: #e5e7eb;
+  --skeleton-start: #e5e7eb;
+  --skeleton-mid: #d1d5db;
+}
+
+.dark {
+  --bg-primary: #111827;
+  --bg-secondary: #1e293b;
+  --bg-hover-primary: #374151;
+  --border-primary: #374151;
+  --text-primary: #d1d5db;
+  --text-secondary: #ffffff;
+  --skeleton-base: #374151;
+  --skeleton-start: #374151;
+  --skeleton-mid: #4b5563;
+}
+
+html.login-bg {
+  background-image: url("/assets/login-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body {
+  font-family: var(--font-poppins);
+}
+
+.hover-soft {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.list-item-general {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: #374151;
+  background-color: transparent;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  width: 100%;
+}
+.list-item-general:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 5em;
+  padding: .8em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #4f46e5;
+  --_m: 
+    conic-gradient(#0000 10%,#000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {to{transform: rotate(1turn)}}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--skeleton-base);
+  border-radius: 4px;
+  width: 100%;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--skeleton-mid),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    left: 150%;
+  }
+}
+
+.button-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.unselectable {
+  pointer-events: none;
+}
+
+.img-hover-effect {
+  position: relative;
+}
+
+.img-hover-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(128, 128, 128, 0.4);
+  transition: background 0.3s ease;
+}
+
+.img-hover-effect:hover::after {
+  background: rgba(128, 128, 128, 0.4);
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.nav-bar-btn {
+  @apply relative p-2 rounded-full transition-colors
+    hover:bg-bgHoverPri text-textPri hover:text-primary
+}
