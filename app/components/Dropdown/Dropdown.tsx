@@ -1,8 +1,10 @@
 import React, { useRef, useEffect, cloneElement } from "react";
 import './styles.css';
 
+export type DropdownToggleBtn = React.ReactElement<{ onClick?: () => void }>;
+
 type Props = {
-    toggleButton: React.ReactElement<{ onClick?: () => void }>;
+    toggleButton: DropdownToggleBtn;
     isOpen: boolean,
     setIsOpen: (isOpen: boolean) => void,
     children: React.ReactNode

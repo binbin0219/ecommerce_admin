@@ -3,6 +3,7 @@ import React, { ReactElement, useEffect, useState } from 'react'
 import Dropdown from './Dropdown/Dropdown'
 import { IconMoon, IconSun } from '@tabler/icons-react';
 import DynamicTooltip from './Tooltip/DynamicToolTip';
+import { DropdownItem } from './Dropdown/DropdownItem/DropdownItem';
 
 const ThemeToggle = () => {
     const themes = ['dark', 'light', 'system'] as const;
@@ -46,14 +47,20 @@ const ThemeToggle = () => {
             isOpen={isOpen}
             setIsOpen={(isOpen) => setOpen(isOpen)}
         >
-            <li onClick={() => setTheme('light')} className={`dropdown-item flex items-center gap-2 ${theme == 'light' ? 'active' : ''}`}>
+            <DropdownItem
+            isActive={theme == 'light'}
+            onClick={() => setTheme('light')}
+            className={`flex items-center gap-2`}>
                 <IconSun/>
                 Light
-            </li>
-            <li onClick={() => setTheme('dark')} className={`dropdown-item flex items-center gap-2 ${theme == 'dark' ? 'active' : ''}`}>
+            </DropdownItem>
+            <DropdownItem
+            isActive={theme == 'dark'}
+            onClick={() => setTheme('dark')}
+            className={`flex items-center gap-2`}>
                 <IconMoon/>
                 Dark
-            </li>
+            </DropdownItem>
             {/* <li className={`dropdown-item flex items-center gap-2 ${false ? 'active' : ''}`}>
                 <IconDeviceDesktop/>
                 System
