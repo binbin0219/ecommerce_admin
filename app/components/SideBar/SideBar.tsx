@@ -1,5 +1,7 @@
 'use client'
 
+import { useAppSelector } from "@/redux/hooks";
+import { selectSeller } from "@/redux/slices/sellerSlice";
 import { IconBell, IconCategory, IconChartBar, IconChevronDown, IconChevronLeft, IconChevronRight, IconChevronUp, IconDiscount, IconLayoutDashboard, IconLogout, IconMessageCircle, IconPackage, IconReceipt, IconSettings, IconShoppingBag, IconTruck, IconUsers } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -101,6 +103,7 @@ export default function SideBar() {
     const pathname = usePathname();
     const router = useRouter();
     const menuItemToExpand = menuItems.find(i => i.subItems && i.href && pathname.startsWith(i.href));
+    const seller = useAppSelector(selectSeller);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [expandedItemLabel, setExpandedItemLabel] = useState<MenuItemLabel | null>(menuItemToExpand?.label ?? null);
     const isOpened = useMemo(() => !isCollapsed, [isCollapsed]);
@@ -136,7 +139,7 @@ export default function SideBar() {
                         <div className="bg-gradient-to-br from-primary p-2 rounded-lg text-white">
                             <IconShoppingBag size={20}/>
                         </div>
-                        <p className="font-bold">StoreName</p>
+                        <p className="font-bold">{seller?.name}</p>
                     </div>
                 )}
                 <button onClick={toggleCollapsed} className={`p-2 rounded-lg hover:bg-bgHoverPri transition-colors`}>
@@ -241,10 +244,10 @@ export default function SideBar() {
                         <>
                             <div className="flex flex-col text-start">
                                 <p className="font-medium text-sm">
-                                    John Seller
+                                    {seller?.name}
                                 </p>
                                 <p className="text-xs text-textPri">
-                                    john@store.com
+                                    {seller?.name}@store.com
                                 </p>
                             </div>
                             <IconLogout size={18} className="group-hover:text-red-500 ms-auto"/>

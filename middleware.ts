@@ -3,12 +3,12 @@ import { NextRequest } from "next/server";
 import { getFrontEndJwtCookie, verifyToken } from "./lib/auth";
 
 export async function middleware(request: NextRequest) {
-    if(process.env.ENABLE_AUTH === "true") {
-        const jwtCookie = await getFrontEndJwtCookie();
-        if(!jwtCookie || !verifyToken(jwtCookie.value)) {
-            return NextResponse.redirect(new URL('/login', request.url));
-        }
-    }
+    // if(process.env.ENABLE_AUTH === "true") {
+    //     const jwtCookie = await getFrontEndJwtCookie();
+    //     if(!jwtCookie || !verifyToken(jwtCookie.value)) {
+    //         return NextResponse.redirect(new URL('/login', request.url));
+    //     }
+    // }
     const response = NextResponse.next();
     return response;
 }

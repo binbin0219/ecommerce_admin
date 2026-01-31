@@ -1,10 +1,13 @@
 'use client'
 
 import api from '@/lib/api-agent';
+import { Seller } from '@/lib/models/Seller';
+import { useAppDispatch, useUtilsDispatch } from '@/redux/hooks';
 import { hideLoader, showLoader } from '@/redux/slices/loaderSlice';
+import { setSeller } from '@/redux/slices/sellerSlice';
+import { store } from '@/redux/store';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 
 interface FormData {
   username: string;
@@ -18,7 +21,7 @@ interface FormErrors {
 
 export default function SignInPage() {
   const router = useRouter();
-  const dispatch = useDispatch();
+  const utilsDispatch = useUtilsDispatch();
   const [formData, setFormData] = useState<FormData>({
     username: '',
     password: ''
@@ -60,11 +63,14 @@ export default function SignInPage() {
     
     if (Object.keys(newErrors).length === 0) {
       try {
-        dispatch(showLoader());
-        await api.post(`/sellers/sign-in`, {
+        utilsDispatch(showLoader());
+        const response = await api.post(`/sellers/sign-in`, {
           username: formData.username,
           password: formData.password,
         })
+
+        const seller = response.data?.seller as Seller;
+        store.dispatch(setSeller(seller));
 
         router.push('/');
       } catch (error) {
@@ -74,7 +80,7 @@ export default function SignInPage() {
           password: 'Wrong username or password',
         })
       } finally {
-        dispatch(hideLoader());
+        utilsDispatch(hideLoader());
       }
     } else {
       setErrors(newErrors);

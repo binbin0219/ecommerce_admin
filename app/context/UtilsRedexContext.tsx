@@ -1,28 +1,29 @@
 "use client";
 import { ReactNode } from 'react';
 import { Provider } from 'react-redux';
-import { createUtilsStore } from '@/redux/utilsStore';
+import { utilsStore } from '@/redux/utilsStore';
 import Loader from '@/components/Loader';
 import ToastContainer from '@/components/ToastContainer/ToastContainer';
 import ConfirmationDialog from '@/components/ConfirmationDialog/ConfirmationDialog';
 import { DialogContextProvider } from './DialogContext';
 
 interface UtilsStoreProviderProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 const UtilsStoreProvider = ({ children }: UtilsStoreProviderProps) => {
-    const store = createUtilsStore()
-    return (
-        <Provider store={store}>
-            <Loader/>
-            <ToastContainer />
-            <ConfirmationDialog />
-            <DialogContextProvider>
-                {children}
-            </DialogContextProvider>
-        </Provider>
-    )
+  return (
+    <Provider store={utilsStore}>
+      {/* Global UI components */}
+      <Loader />
+      <ToastContainer />
+      <ConfirmationDialog />
+      
+      <DialogContextProvider>
+        {children}
+      </DialogContextProvider>
+    </Provider>
+  );
 };
 
 export default UtilsStoreProvider;

@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import Loading from "./loading";
-import StoreProvider from "@/context/ReduxContext";
 import FileViewer from "@/components/FileViewer/FileViewer";
 import { WebSocketProvider } from "@/context/WebSocketContext";
 import Navbar from "@/components/Navbar/Navbar";
@@ -15,9 +14,9 @@ export default async function RootLayout({
 	return (
 		<Suspense fallback={<Loading />}> 
 			<div className="bg-bgPri">
-				{process.env.ENABLE_AUTH === 'true' && <AuthChecker/>}
 				<WebSocketProvider>
-					<StoreProvider>
+					{/* <StoreProvider> */}
+						{process.env.ENABLE_AUTH === 'true' && <AuthChecker/>}
 						<FileViewer/>
 						<div className='flex'>
 							<SideBar/>
@@ -26,7 +25,7 @@ export default async function RootLayout({
 								{children}
 							</div>
 						</div>
-					</StoreProvider>
+					{/* </StoreProvider> */}
 				</WebSocketProvider>
 			</div>
 		</Suspense>

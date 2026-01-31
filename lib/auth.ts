@@ -2,6 +2,8 @@ import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { jwtVerify } from "jose";
 import { getCookie } from "./utils/server";
 import api from "./api-agent";
+import { setSeller } from "@/redux/slices/sellerSlice";
+import { store } from "@/redux/store";
 
 export async function getFrontEndJwtCookie() {
     return await getCookie(process.env.NEXT_JWT_TOKEN_NAME!) as RequestCookie;
@@ -43,5 +45,6 @@ async function logoutOnFrontEnd() {
 export async function logout() {
     // await logoutOnBackend();
     await logoutOnFrontEnd();
+    store.dispatch(setSeller(null))
     window.location.href = '/login';
 }

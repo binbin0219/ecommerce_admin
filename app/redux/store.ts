@@ -1,27 +1,41 @@
-import { configureStore } from '@reduxjs/toolkit';
-import postReducer from './slices/postSlice';
-import userReducer from './slices/userSlice';
-import chatReducer from './slices/chatSlice';
-import currentUserReducer from './slices/currentUserSlice';
-import notificationReducer, { NotificationState } from './slices/notificationSlice';
-import { User } from '@/lib/models/user';
-import { ChatState } from './slices/chatSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-export interface RootState {
-    user: User[];
-    currentUser: User;
-    notifications: NotificationState;
-    chat: ChatState;
-}
+import postReducer from "./slices/postSlice";
+import userReducer from "./slices/userSlice";
+import sellerReducer from "./slices/sellerSlice";
+import chatReducer from "./slices/chatSlice";
+import currentUserReducer from "./slices/currentUserSlice";
+import notificationReducer from "./slices/notificationSlice";
 
-export function createStore() {
-    return configureStore({
-        reducer: {
-            post: postReducer,
-            user: userReducer,
-            currentUser: currentUserReducer,
-            notifications: notificationReducer,
-            chat: chatReducer,
-        },
-    });
-}
+const sellerPersistConfig = {
+  key: "seller",
+  storage,
+};
+
+const persistedSellerReducer = persistReducer(
+  sellerPersistConfig,
+  sellerReducer
+);
+
+export const store = configureStore({
+  reducer: {
+    post: postReducer,
+    user: userReducer,
+    seller: persistedSellerReducer, // ✅ persisted
+    currentUser: currentUserReducer,
+    notifications: notificationReducer,
+    chat: chatReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
+});
+
+export const persistor = persistStore(store);
+
+// ✅ TYPES (NOW THIS WORKS)
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

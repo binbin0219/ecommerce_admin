@@ -1,6 +1,7 @@
 import './globals.css';
 import UtilsStoreProvider from './context/UtilsRedexContext';
 import { Poppins, Fugaz_One } from 'next/font/google';
+import StoreProvider from './context/ReduxContext';
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -29,7 +30,9 @@ export default function RootLayout({
             </head>
             <body className='antialiased'>
                 <UtilsStoreProvider>
-                    {children}
+					<StoreProvider>
+                        {children}
+                    </StoreProvider>
                 </UtilsStoreProvider>
             </body>
         </html>
