@@ -1,7 +1,7 @@
 import { getBackendJwtToken } from "@/lib/auth";
 import { Post } from "@/lib/models/post";
 import { User, RecommendedUsers } from "@/lib/models/user";
-import { apiAgent } from "../api-agent";
+import api from "../api-agent";
 import { defaultUserAvatar } from "../constants";
 
 async function fetchProfileUserFromServer (userId: number) : Promise<{user: User; posts: Post[]} | null> {
@@ -24,7 +24,7 @@ async function fetchProfileUserFromServer (userId: number) : Promise<{user: User
 }
 
 const fetchUsersByUsername = async (username: string, offset: number, recordPerPage: number): Promise<User[]> => {
-    const response = await apiAgent.fetchOnClient(`/api/user/search?offset=${offset}&recordPerPage=${recordPerPage}&username=${username}`);
+    const response = await api.fetchOnClient(`/api/user/search?offset=${offset}&recordPerPage=${recordPerPage}&username=${username}`);
     if(!response.ok) {
         throw new Error("Failed to fetch users by username");
     }
@@ -35,7 +35,7 @@ const fetchUsersByUsername = async (username: string, offset: number, recordPerP
 }
 
 async function getRecommendations(limit: number): Promise<RecommendedUsers[]> {
-    const response = await apiAgent.fetchOnClient(`/api/user/recommendations?limit=${limit}`);
+    const response = await api.fetchOnClient(`/api/user/recommendations?limit=${limit}`);
     if(!response.ok) {
         throw new Error("Failed to fetch user recommendations");
     }

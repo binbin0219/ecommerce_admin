@@ -1,9 +1,9 @@
-import { apiAgent } from "@/lib/api-agent";
+import { api } from "@/lib/api-agent";
 import { ChatRoom, ChatRoomType } from "@/lib/models/ChatRoom";
 import { ChatMessage } from "../models/ChatMessage";
 
 const fetchChatRooms = async (offset: number, recordPerPage: number): Promise<ChatRoom[]> => {
-    const response = await apiAgent.fetchOnClient(`/api/chatroom/get?offset=${offset}&recordPerPage=${recordPerPage}`);
+    const response = await api.fetchOnClient(`/api/chatroom/get?offset=${offset}&recordPerPage=${recordPerPage}`);
     if(!response.ok) {
         throw new Error("Failed to fetch chat rooms");
     }
@@ -17,7 +17,7 @@ const initPrivateChatOnServer = async (requestBody: {
     peerId: number,
     text: string
 }) => {
-    const response = await apiAgent.fetchOnClient(`/api/chatroom/private/init`, {
+    const response = await api.fetchOnClient(`/api/chatroom/private/init`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ const sendPrivateMessageOnServer = async (requestBody: {
     peerId: number,
     text: string
 }) => {
-    const response = await apiAgent.fetchOnClient(`/api/chatroom/private/send`, {
+    const response = await api.fetchOnClient(`/api/chatroom/private/send`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ function getPeerFromPrivateChatRoom(chatRoom: ChatRoom, meId: number) {
 }
 
 const fetchChatMessages = async (chatRoomId: string, offset: number, recordPerPage: number): Promise<ChatMessage[]> => {
-    const response = await apiAgent.fetchOnClient(`/api/chatmessage/get?offset=${offset}&recordPerPage=${recordPerPage}&chatRoomId=${chatRoomId}`);
+    const response = await api.fetchOnClient(`/api/chatmessage/get?offset=${offset}&recordPerPage=${recordPerPage}&chatRoomId=${chatRoomId}`);
     if(!response.ok) {
         throw new Error("Failed to fetch chat messages");
     }
@@ -73,7 +73,7 @@ const fetchChatMessages = async (chatRoomId: string, offset: number, recordPerPa
 }
 
 const fetchPrivateChatRoom = async (userId: number) => {
-    const response = await apiAgent.fetchOnClient(`/api/chatroom/private/get?userId=${userId}`);
+    const response = await api.fetchOnClient(`/api/chatroom/private/get?userId=${userId}`);
     if(!response.ok) {
         throw new Error("Failed to fetch private chat room");
     }

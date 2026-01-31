@@ -1,9 +1,5 @@
 import { getBackendJwtToken } from "./auth";
-
-export const apiAgent = {
-    fetchOnClient,
-    fetchOnServer
-}
+import axios from 'axios';
 
 async function fetchOnClient(url: string, init?: RequestInit) {
     return await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
@@ -22,3 +18,19 @@ async function fetchOnServer(url: string, init?: RequestInit) {
         },
     });
 }
+
+export const apiAgent = {
+    fetchOnClient,
+    fetchOnServer
+}
+
+const api = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  withCredentials: true,
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+export default api;

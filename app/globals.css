@@ -3,30 +3,54 @@
 @tailwind utilities;
 
 :root {
+  /* Fonts */
   --font-poppins: 'Poppins', sans-serif;
   --font-fugaz: 'Fugaz One', cursive;
-  --color-primary: #06B6D4 !important;
-  --bg-primary: #f7f8fa;
-  --bg-secondary: #ffffff;
-  --bg-hover-primary: #f3f4f6;
-  --border-primary: #e5e7eb;
-  --text-primary: #374151;
-  --text-secondary: #000000;
-  --skeleton-base: #e5e7eb;
-  --skeleton-start: #e5e7eb;
-  --skeleton-mid: #d1d5db;
+
+  /* Brand Colors */
+  --color-primary: #2563EB;      /* Blue */
+  --color-secondary: #F97316;    /* Orange */
+
+  /* Backgrounds */
+  --bg-primary: #F9FAFB;
+  --bg-secondary: #FFFFFF;
+  --bg-hover-primary: #EFF6FF;
+
+  /* Borders */
+  --border-primary: #E5E7EB;
+
+  /* Text */
+  --text-primary: #1F2937;
+  --text-secondary: #111827;
+
+  /* Skeleton Loader */
+  --skeleton-base: #E5E7EB;
+  --skeleton-start: #E5E7EB;
+  --skeleton-mid: #D1D5DB;
 }
 
+/* 🌙 Dark Mode */
 .dark {
-  --bg-primary: #111827;
-  --bg-secondary: #1e293b;
-  --bg-hover-primary: #374151;
-  --border-primary: #374151;
-  --text-primary: #d1d5db;
-  --text-secondary: #ffffff;
-  --skeleton-base: #374151;
-  --skeleton-start: #374151;
-  --skeleton-mid: #4b5563;
+  /* Brand Colors (slightly brighter for dark bg) */
+  --color-primary: #3B82F6;      /* Blue */
+  --color-secondary: #FB923C;    /* Orange */
+
+  /* Backgrounds */
+  --bg-primary: #0F172A;
+  --bg-secondary: #1E293B;
+  --bg-hover-primary: #334155;
+
+  /* Borders */
+  --border-primary: #334155;
+
+  /* Text */
+  --text-primary: #E5E7EB;
+  --text-secondary: #FFFFFF;
+
+  /* Skeleton Loader */
+  --skeleton-base: #334155;
+  --skeleton-start: #334155;
+  --skeleton-mid: #475569;
 }
 
 html.login-bg {

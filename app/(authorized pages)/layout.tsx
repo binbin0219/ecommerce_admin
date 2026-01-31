@@ -14,6 +14,7 @@ import { WebSocketProvider } from "@/context/WebSocketContext";
 import { Poppins, Fugaz_One } from 'next/font/google';
 import { DialogContextProvider } from "@/context/DialogContext";
 import Navbar from "@/components/Navbar/Navbar";
+import AuthChecker from '@/components/AuthChecker';
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -35,7 +36,6 @@ export default async function RootLayout({
 	children: React.ReactNode;
 }>) {
 	let authUserData: User | null = null;
-
 	if(process.env.ENABLE_AUTH === "true") {
 		try {
 			const cookieStore = await cookies();
@@ -68,6 +68,7 @@ export default async function RootLayout({
 			</head>
 			<Suspense fallback={<Loading />}> 
 				<body className="antialiased bg-bgPri">
+					<AuthChecker/>
 					<WebSocketProvider>
 						<StoreProvider 
 							currentUser={authUserData} 

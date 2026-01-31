@@ -1,5 +1,8 @@
+import UtilsStoreProvider from '@/context/UtilsRedexContext';
 import '../globals.css';
 import { Poppins, Fugaz_One } from 'next/font/google';
+import ToastContainer from '@/components/ToastContainer/ToastContainer';
+import Loader from '@/components/Loader';
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -21,16 +24,17 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${poppins.variable} ${fugaz.variable} login-bg`}>
+        <html lang="en" className={`${poppins.variable} ${fugaz.variable}`}>
             <head>
                 <meta charSet="UTF-8"></meta>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             </head>
             <body className='antialiased'>
-                {children}
-                {/* <footer className="mt-5">
-                    <p>&copy; 2024 My App. All rights reserved.</p>
-                </footer> */}
+                <UtilsStoreProvider>
+                    <Loader/>
+                    <ToastContainer />
+                    {children}
+                </UtilsStoreProvider>
             </body>
         </html>
     );

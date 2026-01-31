@@ -1,6 +1,7 @@
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { jwtVerify } from "jose";
 import { getCookie } from "./utils/server";
+import api from "./api-agent";
 
 export async function getFrontEndJwtCookie() {
     return await getCookie(process.env.NEXT_JWT_TOKEN_NAME!) as RequestCookie;
@@ -33,17 +34,14 @@ async function logoutOnBackend() {
 }
 
 async function logoutOnFrontEnd() {
-    const response = await fetch(`/api/auth/logout`,{
-        method: 'POST',
-        credentials: 'include'
-    });
+    const response = await api.get(`/sellers/logout`);
     if(!response) {
-        throw new Error("Failed to log out on backend");
+        throw new Error("Failed to log out on frontend");
     }
 }
 
 export async function logout() {
-    await logoutOnBackend();
+    // await logoutOnBackend();
     await logoutOnFrontEnd();
-    window.location.href = '/';
+    window.location.href = '/login';
 }

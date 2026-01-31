@@ -1,8 +1,8 @@
-import { apiAgent } from "@/lib/api-agent";
+import api from "../api-agent";
 import { Notification } from "../models/notification";
 
 const deleteNotificationOnServer = async (notificationId: number) => {
-    const response = await apiAgent.fetchOnClient(`/api/notification/delete`, {
+    const response = await api.fetchOnClient(`/api/notification/delete`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ const deleteNotificationOnServer = async (notificationId: number) => {
 }
 
 const fetchNotifications = async (offset: number) => {
-    const response = await apiAgent.fetchOnClient(`/api/notification/get?offset=${offset}&recordPerPage=6`);
+    const response = await api.fetchOnClient(`/api/notification/get?offset=${offset}&recordPerPage=6`);
     if(!response.ok) {
         throw new Error("Failed to fetch notifications");
     }
