@@ -1,8 +1,6 @@
-import UtilsStoreProvider from '@/context/UtilsRedexContext';
-import '../globals.css';
+import './globals.css';
+import UtilsStoreProvider from './context/UtilsRedexContext';
 import { Poppins, Fugaz_One } from 'next/font/google';
-import ToastContainer from '@/components/ToastContainer/ToastContainer';
-import Loader from '@/components/Loader';
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -31,8 +29,6 @@ export default function RootLayout({
             </head>
             <body className='antialiased'>
                 <UtilsStoreProvider>
-                    <Loader/>
-                    <ToastContainer />
                     {children}
                 </UtilsStoreProvider>
             </body>

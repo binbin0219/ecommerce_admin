@@ -15,8 +15,8 @@ import { notifService } from '@/lib/services/notification';
 
 const NotificationDropdown = memo(() => {
     const dispatch = useDispatch();
-    const isOpen = useSelector((state: RootState) => state.notifications.isOpen);
-    const notifications = useSelector((state: RootState) => state.notifications.data);
+    const isOpen = useSelector((state: RootState) => state.notifications?.isOpen);
+    const notifications = useSelector((state: RootState) => state.notifications?.data);
     const noNotificationRef = useRef<HTMLLIElement>(null);
     const [isAllNotificationFetched, setIsAllNotificationFetched] = useState(false);
     useSubcribeNotifWebSocket(isOpen);

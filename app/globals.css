@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+/* tailwind.css */
+@layer base {
+  /* Light mode scrollbars */
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+  *::-webkit-scrollbar-thumb {
+    @apply bg-gray-500 rounded-full;
+  }
+  *::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
+
+  /* Dark mode scrollbars */
+  .dark *::-webkit-scrollbar-thumb {
+    @apply bg-gray-400;
+  }
+  .dark *::-webkit-scrollbar-track {
+    @apply bg-gray-700;
+  }
+
+  /* Firefox support */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #6b7280 #e5e7eb; /* light mode: thumb track */
+  }
+  .dark * {
+    scrollbar-color: #9ca3af #374151; /* dark mode: thumb track */
+  }
+}
+
 :root {
   /* Fonts */
   --font-poppins: 'Poppins', sans-serif;
@@ -51,6 +82,14 @@
   --skeleton-base: #334155;
   --skeleton-start: #334155;
   --skeleton-mid: #475569;
+}
+
+* {
+  border-color: var(--border-primary);
+}
+
+html {
+  color: var(--text-primary);
 }
 
 html.login-bg {

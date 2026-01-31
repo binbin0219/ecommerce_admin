@@ -1,95 +1,34 @@
-import '../globals.css';
-import Script from "next/script";
 import { Suspense } from "react";
 import Loading from "./loading";
-import ConfirmationDialog from "@/components/ConfirmationDialog/ConfirmationDialog";
 import StoreProvider from "@/context/ReduxContext";
-import ToastContainer from "@/components/ToastContainer/ToastContainer";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { User } from "@/lib/models/user";
-import { initialState as notificationsInitialState } from "@/redux/slices/notificationSlice";
 import FileViewer from "@/components/FileViewer/FileViewer";
 import { WebSocketProvider } from "@/context/WebSocketContext";
-import { Poppins, Fugaz_One } from 'next/font/google';
-import { DialogContextProvider } from "@/context/DialogContext";
 import Navbar from "@/components/Navbar/Navbar";
 import AuthChecker from '@/components/AuthChecker';
-
-const poppins = Poppins({
-	subsets: ['latin'],
-	weight: ['400', '500', '600', '700', '800', '900'],
-	display: 'swap',
-	variable: '--font-poppins',
-});
-
-const fugaz = Fugaz_One({
-	subsets: ['latin'],
-	weight: '400',
-	display: 'swap',
-	variable: '--font-fugaz',
-});
+import SideBar from '@/components/SideBar/SideBar';
 
 export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	let authUserData: User | null = null;
-	if(process.env.ENABLE_AUTH === "true") {
-		try {
-			const cookieStore = await cookies();
-			const nextJwtCookie = cookieStore.get(process.env.NEXT_JWT_TOKEN_NAME!);
-			const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`, {
-				// cache: "force-cache",
-				cache: "no-cache",
-				method: "GET",
-				headers: {
-					Cookie: nextJwtCookie ? `${process.env.JWT_TOKEN_NAME}=${nextJwtCookie.value}` : ''
-				},
-				credentials: "include",
-			});
-
-			if (!response.ok) {
-				if(response.status === 401) redirect('/login');
-				throw new Error();
-			};
-
-			authUserData = await response.json();
-		} catch (e) {
-			console.log("Failed to authenticate user :" + e);
-		}
-	}
-
 	return (
-		<html lang="en" className={`${poppins.variable} ${fugaz.variable}`}>
-			<head>
-				<Script id="global-script" strategy="beforeInteractive" src="/global.js"></Script>
-			</head>
-			<Suspense fallback={<Loading />}> 
-				<body className="antialiased bg-bgPri">
-					<AuthChecker/>
-					<WebSocketProvider>
-						<StoreProvider 
-							currentUser={authUserData} 
-							notifications={{
-								...notificationsInitialState,
-								newNotificationCount: authUserData?.newNotificationCount ?? 0,
-							}}
-							initialPosts={[]}
-							allUnreadMessagesCount={authUserData?.unreadChatMessageCount ?? 0}
-						>
-							<DialogContextProvider>
+		<Suspense fallback={<Loading />}> 
+			<div className="bg-bgPri">
+				{process.env.ENABLE_AUTH === 'true' && <AuthChecker/>}
+				<WebSocketProvider>
+					<StoreProvider>
+						<FileViewer/>
+						<div className='flex'>
+							<SideBar/>
+							<div className='px-10 py-5 flex-1 flex flex-col gap-5'>
 								<Navbar/>
-								<ConfirmationDialog />
-								<ToastContainer />
-								<FileViewer/>
 								{children}
-							</DialogContextProvider>
-						</StoreProvider>
-					</WebSocketProvider>
-				</body>
-			</Suspense>
-		</html>
+							</div>
+						</div>
+					</StoreProvider>
+				</WebSocketProvider>
+			</div>
+		</Suspense>
 	);
 }

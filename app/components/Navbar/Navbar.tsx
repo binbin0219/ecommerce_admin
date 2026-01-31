@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
   const dialog = useDialogContext();
   const currentUser = useSelector((state: RootState) => state.currentUser);
   const isSettingRoute = usePathname().startsWith('/settings');
-  const isUserProfileRoute = usePathname().startsWith(`/user/profile/${currentUser!.id}`);
+  const isUserProfileRoute = usePathname().startsWith(`/user/profile/${currentUser?.id}`);
 
   function logoutConf() {
       dialog.open(
@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
           {/* Right Side: Icons and Profile (visible on md screens and up) */}
           <div className="flex items-center space-x-4">
             
-            <FriendListDropdown/>
+            {/* <FriendListDropdown/> */}
 
             <NotificationDropdown/>
 
@@ -87,8 +87,8 @@ const Navbar: React.FC = () => {
                 <div className="absolute bottom-0 right-0 w-[10px] h-[10px] bg-green-400 rounded-full me-[3px] z-10"></div>
                 <UserIcon
                 className={`${isProfileMenuOpen && 'outline-none ring-2 ring-offset-2 ring-primary'}`}
-                userId={user.id} 
-                updatedAt={user.updatedAt} 
+                userId={user?.id} 
+                updatedAt={user?.updatedAt} 
                 navigateToUserProfile={false} 
                 width={40} 
                 height={40} 
@@ -98,7 +98,7 @@ const Navbar: React.FC = () => {
             isOpen={isProfileMenuOpen}
             setIsOpen={(isOpen: boolean) => setProfileMenuOpen(isOpen)}
             >
-              <UserProfileLink userId={user!.id}>
+              <UserProfileLink userId={user?.id}>
                   <li className={`dropdown-item flex items-center gap-2 ${isUserProfileRoute ? 'active' : ''}`}>
                       <IconUserScan/>
                       Profile

@@ -2,10 +2,10 @@
 import React from 'react'
 import SpinLoader from '../SpinLoader/SpinLoader'
 import { useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
+import { UtilsStoreRootState } from '@/redux/utilsStore'
 
 const ConfirmationDialog = () => {
-    const confDialogState = useSelector((state: RootState) => state.confDialog);
+    const confDialogState = useSelector((state: UtilsStoreRootState) => state.confDialog);
 
     return (
         <div id="conf_dialog" className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-start pt-10 ${!confDialogState.isOpen && 'hidden'}`} style={{zIndex: "9999"}}>
