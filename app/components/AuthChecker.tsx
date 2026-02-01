@@ -14,7 +14,6 @@ export default function AuthChecker() {
 
   const checkAuth = async () => {
       try {
-            console.log(seller);
             if(!seller) {
                 window.location.href = '/login';
             }

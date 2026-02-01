@@ -14,17 +14,7 @@ const ThemeToggle = () => {
         system: <IconMoon/>,
     };
     const [isOpen, setOpen] = useState(false);
-    const [theme, setTheme] = useState<Theme>('light');
-
-    useEffect(() => {
-        const currentTheme = localStorage.getItem('theme') as Theme;
-
-        if(!currentTheme || !themes.includes(currentTheme)) {
-            setTheme('light');
-        } else {
-            setTheme(currentTheme);
-        }
-    }, []);
+    const [theme, setTheme] = useState<Theme>(localStorage.getItem('theme') as Theme);
 
     useEffect(() => {
         localStorage.setItem('theme', theme);
