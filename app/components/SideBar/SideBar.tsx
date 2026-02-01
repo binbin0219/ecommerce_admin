@@ -113,10 +113,18 @@ export default function SideBar() {
     }
 
     const toggleExpanded = (label: MenuItemLabel) => {
-        if(expandedItemLabel === label) {
+        if(isCollapsed) {
+            // If collapsed, just open it
+            setExpandedItemLabel(label);
+            setIsCollapsed(false);
+            return;
+        } else if(expandedItemLabel === label) {
+            // If side bar opended and item expanded, close it
             setExpandedItemLabel(null);
         } else {
+            // Else open it
             setExpandedItemLabel(label);
+            setIsCollapsed(false);
         }
     }
 
@@ -156,7 +164,7 @@ export default function SideBar() {
             <div className="flex flex-col gap-2 px-2 py-4 border-b">
                 {menuItems.map(item => {
                     const isActive = (!item.subItems && item.href === pathname) || (item.subItems && pathname.startsWith(item.href));
-                    const expanded = expandedItemLabel === item.label;
+                    const expanded = expandedItemLabel === item.label && isOpened;
 
                     return (
                         <div key={item.label} className="flex flex-col">
@@ -181,7 +189,7 @@ export default function SideBar() {
                                     <span className={`text-xs ${isActive ? 'text-white' : 'text-primary'}`}>{item.badge}</span>
                                 )}
                                 {isOpened && item.subItems && (
-                                    <IconChevronDown size={18} className={`transition-transform ${expanded && '-rotate-180'}`}/>
+                                    <IconChevronDown size={18} className={`transition-transform ${expanded && '-rotate-180'} ${isActive && 'text-white'}`}/>
                                 )}
                             </button>
                             {item.subItems && (
@@ -196,18 +204,13 @@ export default function SideBar() {
                                                 key={subItem.label}
                                                 href={subItem.href} 
                                                 className={`
-                                                    ms-8 flex rounded-lg px-3 py-2.5 items-center 
-                                                    ${isActive ? 'bg-primary' : 'hover:bg-bgHoverPri transition-colors'}
+                                                    ms-8 rounded-lg px-3 py-2.5 text-nowrap
+                                                    ${isOpened && 'transition-colors'}
+                                                    ${isActive ? 'text-white' : 'text-textPri'}
+                                                    ${isActive ? 'bg-primary' : 'hover:bg-bgHoverPri'}
                                                     ${isCollapsed ? 'justify-center' : 'justify-between'}
                                                 `}>
-                                                    <div className={`
-                                                        flex gap-3 items-center
-                                                        ${isActive ? 'text-white' : 'text-textPri'}
-                                                    `}>
-                                                        {isOpened && (
-                                                            <p className="font-medium text-sm">{subItem.label}</p>
-                                                        )}
-                                                    </div>
+                                                    <p className="font-medium text-sm">{subItem.label}</p>
                                                 </Link>
                                             )
                                         })}
