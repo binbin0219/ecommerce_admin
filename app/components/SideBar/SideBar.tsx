@@ -48,6 +48,7 @@ const menuItems: MenuItem[] = [
             { label: 'All Products', href: '/products' },
             { label: 'Add Product', href: '/products/add' },
             { label: 'Categories', href: '/products/categories' },
+            { label: 'Product Demo Page', href: '/products/test' },
         ],
     },
     {
@@ -133,7 +134,7 @@ export default function SideBar() {
         className={`
             h-svh scrollbar-custom
             bg-bgSec border border-borderPri flex flex-col overflow-x-hidden
-            transition-all duration-300 ease-in-out
+            transition-all duration-300 ease-in-out sticky top-0
             ${isCollapsed ? 'w-20' : 'w-64'}`
         }>
             {/* Header */}

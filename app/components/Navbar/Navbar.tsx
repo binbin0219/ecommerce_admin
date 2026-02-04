@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
-import FriendListDropdown from './FriendListDropdown';
 import NotificationDropdown from './NotificationDropdown';
 import UserIcon from '../UserIcon/UserIcon';
 import UserProfileLink from '../Link/UserProfileLink';
@@ -13,7 +12,6 @@ import { addToast } from '@/redux/slices/toastSlice';
 import { usePathname, useRouter } from 'next/navigation';
 import { useDialogContext } from '@/context/DialogContext';
 import Dropdown from '../Dropdown/Dropdown';
-import SearchBar from './SearchBar';
 import ThemeToggle from '../ThemeToggle';
 import SmartImage from '../SmartImage';
 
@@ -50,7 +48,7 @@ const Navbar: React.FC = () => {
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-bgSec rounded-lg shadow-md">
+    <nav className="sticky top-5 z-50 bg-bgSec rounded-lg shadow-md">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Left Side: Logo */}
