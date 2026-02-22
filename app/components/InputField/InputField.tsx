@@ -6,19 +6,30 @@ import React, { useRef } from 'react'
 type InputKey = "character" | "number" | "symbol" | "space";
 
 type Props = {
-    value: string;
+    value: string | null;
     setter: (value: string) => void;
-    type: string;
-    name: string;
-    placeholder: string;
-    min: number;
-    max: number;
+    type?: string;
+    name?: string;
+    placeholder?: string;
+    min?: number;
+    max?: number;
     disableSpace?: boolean;
-    allowedTypes: InputKey[];
+    allowedTypes?: InputKey[];
     allowEmpty?: boolean;
 }
 
-const InputField = (props: Props) => {
+const InputField = ({
+    value,
+    setter,
+    type,
+    name,
+    placeholder,
+    min,
+    max,
+    disableSpace,
+    allowedTypes = ['character', 'number', 'symbol', 'space'],
+    allowEmpty,
+}: Props) => {
     const textLengthMessageRef = useRef<HTMLParagraphElement>(null);
 
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +37,7 @@ const InputField = (props: Props) => {
         const value = target.value;
         const isEmpty = checkIsEmpty(value);
 
-        if(props.allowEmpty) {
+        if(allowEmpty) {
             if(isEmpty) {
                 target.style.borderColor = 'red';
             } else {
@@ -34,26 +45,28 @@ const InputField = (props: Props) => {
             }
         }
 
-        if(!checkIsValidInputLength(value, props.min, props.max)) {
-            textLengthMessageRef.current!.style.display = 'flex';
-            target.style.borderColor = 'red';
-        } else {
-            textLengthMessageRef.current!.style.display = 'none';
-            target.style.borderColor = '';
+        if(min && max) {
+            if(!checkIsValidInputLength(value, min, max)) {
+                textLengthMessageRef.current!.style.display = 'flex';
+                target.style.borderColor = 'red';
+            } else {
+                textLengthMessageRef.current!.style.display = 'none';
+                target.style.borderColor = '';
+            }
         }
     
-        props.setter(e.target.value);
+        setter(e.target.value);
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (isAllowedKey(e.key, props.allowedTypes)) return;
+        if (allowedTypes && isAllowedKey(e.key, allowedTypes)) return;
         e.preventDefault();
     };
 
     const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
         const pastedText = e.clipboardData.getData('text');
         for (const char of pastedText) {
-            if (!isAllowedKey(char, props.allowedTypes)) {
+            if (allowedTypes && !isAllowedKey(char, allowedTypes)) {
                 e.preventDefault();
                 return;
             }
@@ -77,10 +90,10 @@ const InputField = (props: Props) => {
     return (
         <div className='flex flex-col gap-2'>
             <input
-            type={props.type}
-            name={props.name}
-            placeholder={props.placeholder}
-            value={props.value}
+            type={type}
+            name={name}
+            placeholder={placeholder}
+            value={value ?? ""}
             onChange={(e) => handleUsernameChange(e)}
             onKeyDown= {(e) => handleKeyDown(e)}
             onPaste= {(e) => handlePaste(e)}
@@ -88,7 +101,7 @@ const InputField = (props: Props) => {
             />
             <p ref={textLengthMessageRef} className='text-red-500 mt-2' style={{display: 'none'}}>
                 <IconAlertCircle className='me-2'/>
-                Must between {props.min} and {props.max} characters
+                Must between {min} and {max} characters
             </p>
         </div>
     )

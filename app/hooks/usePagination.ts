@@ -7,46 +7,75 @@ export type UsePaginationReturn = {
   pageSize: number;
   totalPages: number;
   goToPage: (page: number) => void;
+  setPageSize: (size: number) => void;
   nextPage: () => void;
   prevPage: () => void;
 };
 
 type UsePaginationProps = {
   totalItems: number;
-  pageSize?: number;
+  defaultPageSize?: number;
 };
 
 export function usePagination({
   totalItems,
-  pageSize = 10,
+  defaultPageSize = 5,
 }: UsePaginationProps): UsePaginationReturn {
   const searchParams = useSearchParams();
   const router = useRouter();
+
+  // ===== 从 URL 读取 pageSize =====
+  const pageSize = useMemo(() => {
+    const size = Number(searchParams.get("pageSize"));
+    return isNaN(size) || size <= 0 ? defaultPageSize : size;
+  }, [searchParams, defaultPageSize]);
+
+  // ===== 计算 totalPages =====
   const totalPages = useMemo(() => {
-    return Math.ceil(totalItems / pageSize);
+    return Math.max(1, Math.ceil(totalItems / pageSize));
   }, [totalItems, pageSize]);
-  const currentPage = isNaN(Number(searchParams.get('page'))) 
-    ? 1 
-    : Math.min(Math.max(Number(searchParams.get('page')), 1), totalPages);
 
-  const setCurrentPage = (page: number) => {
-    page = Math.min(Math.max(page, 1), totalPages)
+  // ===== 从 URL 读取 currentPage =====
+  const currentPage = useMemo(() => {
+    const page = Number(searchParams.get("page"));
+    if (isNaN(page)) return 1;
+    return Math.min(Math.max(page, 1), totalPages);
+  }, [searchParams, totalPages]);
+
+  // ===== 更新 URL 工具函数 =====
+  const updateParams = (params: Record<string, string>) => {
     const newSearchParams = new URLSearchParams(searchParams);
-    newSearchParams.set('page', `${page}`);
-    router.push(`?${newSearchParams.toString()}`);
-  }
 
+    Object.entries(params).forEach(([key, value]) => {
+      newSearchParams.set(key, value);
+    });
+
+    router.push(`?${newSearchParams.toString()}`);
+  };
+
+  // ===== 分页操作 =====
   const goToPage = (page: number) => {
-    if (page < 1 || page > totalPages) return;
-    setCurrentPage(page);
+    const safePage = Math.min(Math.max(page, 1), totalPages);
+    updateParams({ page: String(safePage) });
   };
 
   const nextPage = () => {
-    setCurrentPage(Math.min(currentPage + 1, totalPages));
+    goToPage(currentPage + 1);
   };
 
   const prevPage = () => {
-    setCurrentPage(Math.max(currentPage - 1, 1));
+    goToPage(currentPage - 1);
+  };
+
+  // ===== 修改 pageSize =====
+  const setPageSize = (size: number) => {
+    if (size <= 0) return;
+
+    // pageSize 改变时，通常回到第一页
+    updateParams({
+      pageSize: String(size),
+      page: "1",
+    });
   };
 
   return {
@@ -55,6 +84,7 @@ export function usePagination({
     pageSize,
     totalPages,
     goToPage,
+    setPageSize,
     nextPage,
     prevPage,
   };

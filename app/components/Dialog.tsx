@@ -38,7 +38,7 @@ export default function Dialog({ children, isOpen, onClose }: DialogProps) {
       <div
         className={`
           card
-          w-full max-w-lg
+          max-w-[90%] min-w-64
           mx-4
           transform transition-all duration-300
           ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}

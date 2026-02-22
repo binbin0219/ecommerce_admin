@@ -1,9 +1,10 @@
 'use client'
 
 import DataTable from "@/components/Datatable"
-import { PaginationNewPageCallback } from "@/components/Pagination"
+import Pagination, { PaginationNewPageCallback } from "@/components/Pagination"
 import api from "@/lib/api-agent"
 import { useState } from "react"
+import ProductDialog from "./ProductDialog"
 
 interface Product {
   id: string
@@ -30,6 +31,8 @@ const headers = [
 export default function ProductsPage() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
+  const [isProductDialogOpen, setIsProductDialogOpen] = useState(false);
+  const [isEditProduct, setIsEditProduct] = useState(false);
 
   const fetchProducts : PaginationNewPageCallback = async (currentPage: number, pageSize: number) => {
     try {
@@ -56,17 +59,32 @@ export default function ProductsPage() {
   }
 
   const handleEdit = async (product: Product) => {
-    
+    setIsProductDialogOpen(true);
+    setIsEditProduct(true);
+  }
+
+  const handleAdd = async () => {
+    setIsProductDialogOpen(true);
+    setIsEditProduct(false);
   }
 
   return (
-      <div>
+      <div className="flex flex-col gap-5">
+        <div className="flex justify-end w-full">
+          <button onClick={handleAdd} className="px-4 py-2 rounded-md bg-primary text-sm">Add product</button>
+        </div>
+        
+        <Pagination totalItems={totalItems} onNewPage={fetchProducts}>
           <DataTable<Product> 
           items={filteredProducts} 
           headers={headers} 
-          totalItems={totalItems}
-          onNewPage={fetchProducts}
           onEdit={handleEdit} />
+        </Pagination>
+
+        <ProductDialog 
+        isOpen={isProductDialogOpen} 
+        isEdit={isEditProduct}
+        onClose={() => setIsProductDialogOpen(false)}/>
       </div>
   )
 }
