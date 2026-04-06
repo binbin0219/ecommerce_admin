@@ -243,7 +243,7 @@ export default function SignUpPage() {
       <div className="w-full max-w-md">
         {/* Logo/Brand Section */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-xl mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-appPrimary rounded-xl mb-4">
             <svg
               className="w-8 h-8 text-white"
               fill="none"
@@ -298,7 +298,7 @@ export default function SignUpPage() {
                 onKeyDown={handleKeyPress}
                 className={`w-full px-4 py-3 bg-bgPri border ${
                   errors.name ? 'border-red-500' : 'border-borderPri'
-                } rounded-lg text-textSec placeholder-textPri focus:outline-none focus:ring-2 focus:ring-primary transition-all`}
+                } rounded-lg text-textSec placeholder-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary transition-all`}
                 placeholder="Enter your store name"
               />
               {errors.name && (
@@ -319,7 +319,7 @@ export default function SignUpPage() {
                 onKeyDown={handleKeyPress}
                 className={`w-full px-4 py-3 bg-bgPri border ${
                   errors.username ? 'border-red-500' : 'border-borderPri'
-                } rounded-lg text-textSec placeholder-textPri focus:outline-none focus:ring-2 focus:ring-primary transition-all`}
+                } rounded-lg text-textSec placeholder-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary transition-all`}
                 placeholder="Choose a username"
               />
               {isCheckingUsername && (
@@ -345,7 +345,7 @@ export default function SignUpPage() {
                   onKeyDown={handleKeyPress}
                   className={`w-full px-4 py-3 bg-bgPri border ${
                     errors.password ? 'border-red-500' : 'border-borderPri'
-                  } rounded-lg text-textSec placeholder-textPri focus:outline-none focus:ring-2 focus:ring-primary transition-all pr-12`}
+                  } rounded-lg text-textSec placeholder-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary transition-all pr-12`}
                   placeholder="Create a strong password"
                 />
 
@@ -379,7 +379,7 @@ export default function SignUpPage() {
               disabled={!canRegister}
               onClick={handleSubmit}
               className={`
-                w-full bg-primary text-white font-semibold py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
+                w-full bg-appPrimary text-white font-semibold py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-appPrimary focus:ring-offset-2
                 ${canRegister && 'hover:opacity-90 cursor-pointer'}
               `}
             >
@@ -391,7 +391,7 @@ export default function SignUpPage() {
           <div className="mt-6 text-center">
             <p className="text-textPri">
               Already have an account?{' '}
-              <a href="/login" className="text-primary hover:underline font-medium">
+              <a href="/login" className="text-appPrimary hover:underline font-medium">
                 Sign in
               </a>
             </p>
@@ -401,9 +401,9 @@ export default function SignUpPage() {
         {/* Terms */}
         <p className="text-center text-sm text-textPri mt-6">
           By signing up, you agree to our{' '}
-          <a href="#" className="text-primary hover:underline">Terms of Service</a>{' '}
+          <a href="#" className="text-appPrimary hover:underline">Terms of Service</a>{' '}
           and{' '}
-          <a href="#" className="text-primary hover:underline">Privacy Policy</a>
+          <a href="#" className="text-appPrimary hover:underline">Privacy Policy</a>
         </p>
       </div>
     </div>

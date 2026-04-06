@@ -236,5 +236,5 @@ button:disabled {
 
 .nav-bar-btn {
   @apply relative p-2 rounded-full transition-colors
-    hover:bg-bgHoverPri text-textPri hover:text-primary
+    hover:bg-bgHoverPri text-textPri hover:text-textPri
 }

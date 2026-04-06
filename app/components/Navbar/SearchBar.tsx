@@ -41,7 +41,7 @@ const SearchBar = () => {
                 }, 150)}
                 value={searchInput} 
                 type="text" 
-                className='block w-full bg-bgPri border border-borderPri rounded-full py-2 pl-10 pr-3 text-sm text-textPri placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all' 
+                className='block w-full bg-bgPri border border-borderPri rounded-full py-2 pl-10 pr-3 text-sm text-textPri placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-appPrimary transition-all' 
                 placeholder='Search users...' 
                 />
                 <IconSearch width={20} height={20} className='absolute top-[8px] start-[10px] text-textPri'/>

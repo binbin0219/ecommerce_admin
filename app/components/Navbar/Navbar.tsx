@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
           <div className="flex-shrink-0">
             <Link 
             href={"/"} 
-            className="text-4xl me-12 text-primary cursor-pointer hover:text-primary transition-colors duration-300 flex items-center" 
+            className="text-4xl me-12 text-appPrimary cursor-pointer hover:text-appPrimary transition-colors duration-300 flex items-center" 
             style={{ fontFamily: "fugaz one" }}
             >
               <SmartImage
@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
               <div className='relative'>
                 <div className="absolute bottom-0 right-0 w-[10px] h-[10px] bg-green-400 rounded-full me-[3px] z-10"></div>
                 <UserIcon
-                className={`${isProfileMenuOpen && 'outline-none ring-2 ring-offset-2 ring-primary'}`}
+                className={`${isProfileMenuOpen && 'outline-none ring-2 ring-offset-2 ring-appPrimary'}`}
                 userId={user?.id} 
                 updatedAt={user?.updatedAt} 
                 navigateToUserProfile={false} 

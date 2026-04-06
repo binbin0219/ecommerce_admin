@@ -98,7 +98,7 @@ export default function SignInPage() {
       <div className="w-full max-w-md">
         {/* Logo/Brand Section */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-xl mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-appPrimary rounded-xl mb-4">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
@@ -124,7 +124,7 @@ export default function SignInPage() {
                 onKeyPress={handleKeyPress}
                 className={`w-full px-4 py-3 bg-bgPri border ${
                   errors.username ? 'border-red-500' : 'border-borderPri'
-                } rounded-lg text-textSec placeholder-textPri focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all`}
+                } rounded-lg text-textSec placeholder-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary focus:border-transparent transition-all`}
                 placeholder="Enter your username"
               />
               {errors.username && (
@@ -147,7 +147,7 @@ export default function SignInPage() {
                   onKeyPress={handleKeyPress}
                   className={`w-full px-4 py-3 bg-bgPri border ${
                     errors.password ? 'border-red-500' : 'border-borderPri'
-                  } rounded-lg text-textSec placeholder-textPri focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all pr-12`}
+                  } rounded-lg text-textSec placeholder-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary focus:border-transparent transition-all pr-12`}
                   placeholder="Enter your password"
                 />
                 <button
@@ -180,13 +180,13 @@ export default function SignInPage() {
                   id="rememberMe"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 text-primary bg-bgPri border-borderPri rounded focus:ring-2 focus:ring-primary cursor-pointer"
+                  className="w-4 h-4 text-appPrimary bg-bgPri border-borderPri rounded focus:ring-2 focus:ring-appPrimary cursor-pointer"
                 />
                 <label htmlFor="rememberMe" className="ml-2 text-sm text-textPri cursor-pointer">
                   Remember me
                 </label>
               </div>
-              <a href="#" className="text-sm text-primary hover:underline font-medium">
+              <a href="#" className="text-sm text-appPrimary hover:underline font-medium">
                 Forgot password?
               </a>
             </div>
@@ -194,7 +194,7 @@ export default function SignInPage() {
             {/* Submit Button */}
             <button
               onClick={handleSubmit}
-              className="w-full bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              className="w-full bg-appPrimary hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-appPrimary focus:ring-offset-2"
             >
               Sign In
             </button>
@@ -204,7 +204,7 @@ export default function SignInPage() {
           <div className="mt-6 text-center">
             <p className="text-textPri">
               Don't have an account?{' '}
-              <a href="/signup" className="text-primary hover:underline font-medium">
+              <a href="/signup" className="text-appPrimary hover:underline font-medium">
                 Create one
               </a>
             </p>
@@ -214,7 +214,7 @@ export default function SignInPage() {
         {/* Help Text */}
         <p className="text-center text-sm text-textPri mt-6">
           Need help?{' '}
-          <a href="#" className="text-primary hover:underline">
+          <a href="#" className="text-appPrimary hover:underline">
             Contact Support
           </a>
         </p>

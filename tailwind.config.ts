@@ -10,7 +10,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "var(--color-primary)",
+        appPrimary: "var(--color-primary)",
         'dark-btn': '#3B3C3E',
 
         // background layers

@@ -145,7 +145,7 @@ export default function SideBar() {
             `}>
                 {isOpened && (
                     <div className={`flex gap-3 items-center`}>
-                        <div className="bg-gradient-to-br from-primary p-2 rounded-lg text-white">
+                        <div className="bg-gradient-to-br from-appPrimary p-2 rounded-lg text-white">
                             <IconShoppingBag size={20}/>
                         </div>
                         <p className="font-bold">{seller?.name}</p>
@@ -174,7 +174,7 @@ export default function SideBar() {
                             className={`
                                 flex rounded-lg px-3 py-2.5 items-center 
                                 ${expanded && 'bg-bgHoverPri'}
-                                ${isActive ? 'bg-primary' : 'hover:bg-bgHoverPri transition-colors'}
+                                ${isActive ? 'bg-appPrimary' : 'hover:bg-bgHoverPri transition-colors'}
                                 ${isCollapsed ? 'justify-center' : 'justify-between'}
                             `}>
                                 <div className={`
@@ -187,7 +187,7 @@ export default function SideBar() {
                                     )}
                                 </div>
                                 {isOpened && item.badge && (
-                                    <span className={`text-xs ${isActive ? 'text-white' : 'text-primary'}`}>{item.badge}</span>
+                                    <span className={`text-xs ${isActive ? 'text-white' : 'text-appPrimary'}`}>{item.badge}</span>
                                 )}
                                 {isOpened && item.subItems && (
                                     <IconChevronDown size={18} className={`transition-transform ${expanded && '-rotate-180'} ${isActive && 'text-white'}`}/>
@@ -208,7 +208,7 @@ export default function SideBar() {
                                                     ms-8 rounded-lg px-3 py-2.5 text-nowrap
                                                     ${isOpened && 'transition-colors'}
                                                     ${isActive ? 'text-white' : 'text-textPri'}
-                                                    ${isActive ? 'bg-primary' : 'hover:bg-bgHoverPri'}
+                                                    ${isActive ? 'bg-appPrimary' : 'hover:bg-bgHoverPri'}
                                                     ${isCollapsed ? 'justify-center' : 'justify-between'}
                                                 `}>
                                                     <p className="font-medium text-sm">{subItem.label}</p>
@@ -241,7 +241,7 @@ export default function SideBar() {
             {/* Footer */}
             <div className="px-2 py-4 flex justify-center">
                 <button className="group flex items-center gap-2 hover:bg-bgHoverPri transition-colors rounded-lg p-3 w-full">
-                    <div className="rounded-full min-w-10 h-10 bg-gradient-to-br from-primary font-bold flex justify-center items-center text-white">
+                    <div className="rounded-full min-w-10 h-10 bg-gradient-to-br from-appPrimary font-bold flex justify-center items-center text-white">
                         JS
                     </div>
                     {isOpened && (

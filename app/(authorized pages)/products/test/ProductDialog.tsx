@@ -260,7 +260,7 @@ export default function ProductDialog(props: Props) {
             {/* Basic Information */}
             <section>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-1 h-6 bg-primary rounded-full"></div>
+                <div className="w-1 h-6 bg-appPrimary rounded-full"></div>
                 <h3 className="text-xl font-bold text-textSec">Basic Information</h3>
               </div>
               
@@ -274,7 +274,7 @@ export default function ProductDialog(props: Props) {
                     value={productName}
                     onChange={(e) => setProductName(e.target.value)}
                     placeholder="Enter product name"
-                    className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                   />
                 </div>
 
@@ -287,7 +287,7 @@ export default function ProductDialog(props: Props) {
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Describe your product..."
                     rows={4}
-                    className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+                    className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50 resize-none"
                   />
                 </div>
 
@@ -298,7 +298,7 @@ export default function ProductDialog(props: Props) {
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                   >
                     <option value="">Select a category</option>
                     {categories.map((cat) => (
@@ -314,7 +314,7 @@ export default function ProductDialog(props: Props) {
             {/* Images */}
             <section>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-1 h-6 bg-primary rounded-full"></div>
+                <div className="w-1 h-6 bg-appPrimary rounded-full"></div>
                 <h3 className="text-xl font-bold text-textSec">Product Images</h3>
               </div>
 
@@ -342,7 +342,7 @@ export default function ProductDialog(props: Props) {
                       key={index}
                       className={`relative aspect-square rounded-lg overflow-hidden border-2 ${
                         primaryImageIndex === index
-                          ? 'border-primary ring-2 ring-primary/20'
+                          ? 'border-appPrimary ring-2 ring-appPrimary/20'
                           : 'border-borderPri'
                       }`}
                     >
@@ -352,7 +352,7 @@ export default function ProductDialog(props: Props) {
                         className="w-full h-full object-cover"
                       />
                       {primaryImageIndex === index && (
-                        <div className="absolute top-2 left-2 bg-primary text-white text-xs px-2 py-1 rounded-full font-semibold">
+                        <div className="absolute top-2 left-2 bg-appPrimary text-white text-xs px-2 py-1 rounded-full font-semibold">
                           Primary
                         </div>
                       )}
@@ -382,7 +382,7 @@ export default function ProductDialog(props: Props) {
             {/* Pricing & Inventory */}
             <section>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-1 h-6 bg-primary rounded-full"></div>
+                <div className="w-1 h-6 bg-appPrimary rounded-full"></div>
                 <h3 className="text-xl font-bold text-textSec">Pricing & Inventory</h3>
               </div>
 
@@ -402,7 +402,7 @@ export default function ProductDialog(props: Props) {
                         onChange={(e) => setBasePrice(e.target.value)}
                         placeholder="0.00"
                         step="0.01"
-                        className="w-full pl-8 pr-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50"
+                        className="w-full pl-8 pr-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                       />
                     </div>
                   </div>
@@ -421,7 +421,7 @@ export default function ProductDialog(props: Props) {
                         onChange={(e) => setComparePrice(e.target.value)}
                         placeholder="0.00"
                         step="0.01"
-                        className="w-full pl-8 pr-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50"
+                        className="w-full pl-8 pr-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                       />
                     </div>
                   </div>
@@ -440,7 +440,7 @@ export default function ProductDialog(props: Props) {
                         onChange={(e) => setCostPrice(e.target.value)}
                         placeholder="0.00"
                         step="0.01"
-                        className="w-full pl-8 pr-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50"
+                        className="w-full pl-8 pr-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                       />
                     </div>
                   </div>
@@ -470,7 +470,7 @@ export default function ProductDialog(props: Props) {
                       value={sku}
                       onChange={(e) => setSku(e.target.value)}
                       placeholder="SKU-001"
-                      className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                     />
                   </div>
 
@@ -483,7 +483,7 @@ export default function ProductDialog(props: Props) {
                       value={barcode}
                       onChange={(e) => setBarcode(e.target.value)}
                       placeholder="123456789"
-                      className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                     />
                   </div>
                 </div>
@@ -499,7 +499,7 @@ export default function ProductDialog(props: Props) {
                         value={stock}
                         onChange={(e) => setStock(e.target.value)}
                         placeholder="0"
-                        className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50"
+                        className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                       />
                     </div>
 
@@ -512,7 +512,7 @@ export default function ProductDialog(props: Props) {
                         value={lowStockThreshold}
                         onChange={(e) => setLowStockThreshold(e.target.value)}
                         placeholder="10"
-                        className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50"
+                        className="w-full px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                       />
                     </div>
                   </div>
@@ -523,7 +523,7 @@ export default function ProductDialog(props: Props) {
             {/* Product Variants */}
             <section>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-1 h-6 bg-primary rounded-full"></div>
+                <div className="w-1 h-6 bg-appPrimary rounded-full"></div>
                 <h3 className="text-xl font-bold text-textSec">Product Variants</h3>
               </div>
 
@@ -541,7 +541,7 @@ export default function ProductDialog(props: Props) {
                     onChange={(e) => setHasVariants(e.target.checked)}
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-borderPri peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-borderPri after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                  <div className="w-11 h-6 bg-borderPri peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-appPrimary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-borderPri after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-appPrimary"></div>
                 </label>
               </div>
 
@@ -596,11 +596,11 @@ export default function ProductDialog(props: Props) {
                             }
                           }}
                           placeholder={`Add ${option.name.toLowerCase()} value`}
-                          className="flex-1 px-3 py-2 bg-bgSec border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50"
+                          className="flex-1 px-3 py-2 bg-bgSec border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                         />
                         <button
                           onClick={() => addOptionValue(option.id)}
-                          className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                          className="px-4 py-2 bg-appPrimary text-white rounded-lg hover:bg-appPrimary/90 transition-colors"
                         >
                           Add
                         </button>
@@ -620,11 +620,11 @@ export default function ProductDialog(props: Props) {
                         }
                       }}
                       placeholder="Option name (e.g., Size, Color)"
-                      className="flex-1 px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      className="flex-1 px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                     />
                     <button
                       onClick={addOption}
-                      className="flex items-center gap-2 px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                      className="flex items-center gap-2 px-4 py-3 bg-appPrimary text-white rounded-lg hover:bg-appPrimary/90 transition-colors"
                     >
                       <IconPlus size={18} />
                       Add Option
@@ -667,7 +667,7 @@ export default function ProductDialog(props: Props) {
                                 onChange={(e) =>
                                   updateVariant(variant.id, 'sku', e.target.value)
                                 }
-                                className="w-full px-3 py-2 bg-bgSec border border-borderPri rounded-lg text-textSec text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+                                className="w-full px-3 py-2 bg-bgSec border border-borderPri rounded-lg text-textSec text-sm focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                               />
                             </div>
 
@@ -686,7 +686,7 @@ export default function ProductDialog(props: Props) {
                                     updateVariant(variant.id, 'price', parseFloat(e.target.value))
                                   }
                                   step="0.01"
-                                  className="w-full pl-7 pr-3 py-2 bg-bgSec border border-borderPri rounded-lg text-textSec text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+                                  className="w-full pl-7 pr-3 py-2 bg-bgSec border border-borderPri rounded-lg text-textSec text-sm focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                                 />
                               </div>
                             </div>
@@ -701,7 +701,7 @@ export default function ProductDialog(props: Props) {
                                 onChange={(e) =>
                                   updateVariant(variant.id, 'stock', parseInt(e.target.value))
                                 }
-                                className="w-full px-3 py-2 bg-bgSec border border-borderPri rounded-lg text-textSec text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+                                className="w-full px-3 py-2 bg-bgSec border border-borderPri rounded-lg text-textSec text-sm focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                               />
                             </div>
                           </div>
@@ -716,7 +716,7 @@ export default function ProductDialog(props: Props) {
             {/* Additional Settings */}
             <section>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-1 h-6 bg-primary rounded-full"></div>
+                <div className="w-1 h-6 bg-appPrimary rounded-full"></div>
                 <h3 className="text-xl font-bold text-textSec">Additional Settings</h3>
               </div>
 
@@ -731,9 +731,9 @@ export default function ProductDialog(props: Props) {
                     {tags.map((tag, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-1 px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-lg"
+                        className="flex items-center gap-1 px-3 py-1.5 bg-appPrimary/10 border border-appPrimary/20 rounded-lg"
                       >
-                        <span className="text-sm text-primary font-medium">{tag}</span>
+                        <span className="text-sm text-appPrimary font-medium">{tag}</span>
                         <button
                           onClick={() => removeTag(index)}
                           className="ml-1 hover:text-red-500 transition-colors"
@@ -755,11 +755,11 @@ export default function ProductDialog(props: Props) {
                         }
                       }}
                       placeholder="Add a tag"
-                      className="flex-1 px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      className="flex-1 px-4 py-3 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                     />
                     <button
                       onClick={addTag}
-                      className="px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                      className="px-4 py-3 bg-appPrimary text-white rounded-lg hover:bg-appPrimary/90 transition-colors"
                     >
                       Add
                     </button>
@@ -776,13 +776,13 @@ export default function ProductDialog(props: Props) {
                       onClick={() => setStatus('draft')}
                       className={`p-4 rounded-lg border-2 transition-all ${
                         status === 'draft'
-                          ? 'border-primary bg-primary/10'
-                          : 'border-borderPri hover:border-primary/50'
+                          ? 'border-appPrimary bg-appPrimary/10'
+                          : 'border-borderPri hover:border-appPrimary/50'
                       }`}
                     >
                       <div className="flex items-center gap-2 mb-1">
-                        <IconAlertCircle size={20} className={status === 'draft' ? 'text-primary' : 'text-textPri'} />
-                        <span className={`font-semibold ${status === 'draft' ? 'text-primary' : 'text-textSec'}`}>
+                        <IconAlertCircle size={20} className={status === 'draft' ? 'text-appPrimary' : 'text-textPri'} />
+                        <span className={`font-semibold ${status === 'draft' ? 'text-appPrimary' : 'text-textSec'}`}>
                           Draft
                         </span>
                       </div>
@@ -825,7 +825,7 @@ export default function ProductDialog(props: Props) {
                       type="checkbox"
                       checked={trackInventory}
                       onChange={(e) => setTrackInventory(e.target.checked)}
-                      className="w-5 h-5 text-primary rounded border-borderPri focus:ring-2 focus:ring-primary/50"
+                      className="w-5 h-5 text-appPrimary rounded border-borderPri focus:ring-2 focus:ring-appPrimary/50"
                     />
                   </label>
 
@@ -840,7 +840,7 @@ export default function ProductDialog(props: Props) {
                       type="checkbox"
                       checked={allowBackorder}
                       onChange={(e) => setAllowBackorder(e.target.checked)}
-                      className="w-5 h-5 text-primary rounded border-borderPri focus:ring-2 focus:ring-primary/50"
+                      className="w-5 h-5 text-appPrimary rounded border-borderPri focus:ring-2 focus:ring-appPrimary/50"
                     />
                   </label>
 
@@ -855,7 +855,7 @@ export default function ProductDialog(props: Props) {
                       type="checkbox"
                       checked={isFeatured}
                       onChange={(e) => setIsFeatured(e.target.checked)}
-                      className="w-5 h-5 text-primary rounded border-borderPri focus:ring-2 focus:ring-primary/50"
+                      className="w-5 h-5 text-appPrimary rounded border-borderPri focus:ring-2 focus:ring-appPrimary/50"
                     />
                   </label>
                 </div>
@@ -876,7 +876,7 @@ export default function ProductDialog(props: Props) {
           <button
             onClick={handleSubmit}
             disabled={!isValid}
-            className="flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/20"
+            className="flex items-center gap-2 px-6 py-2.5 bg-appPrimary text-white rounded-lg hover:bg-appPrimary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-appPrimary/20"
           >
             <IconCheck size={18} />
             Create Product

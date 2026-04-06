@@ -232,7 +232,7 @@ export default function ProductsPage() {
                     <IconDownload size={18} />
                     <span className="font-medium">Export</span>
                 </button>
-                <button className="flex items-center gap-2 px-4 py-2.5 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+                <button className="flex items-center gap-2 px-4 py-2.5 bg-appPrimary text-white rounded-lg hover:bg-appPrimary/90 transition-colors shadow-lg shadow-appPrimary/20">
                     <IconPlus size={18} />
                     <span className="font-medium">Add Product</span>
                 </button>
@@ -276,7 +276,7 @@ export default function ProductsPage() {
                     placeholder="Search products by name or SKU..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    className="w-full pl-10 pr-4 py-2.5 bg-bgPri border border-borderPri rounded-lg text-textSec placeholder:text-textPri focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                 />
                 </div>
 
@@ -285,7 +285,7 @@ export default function ProductsPage() {
                 onClick={() => setShowFilters(!showFilters)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border transition-colors ${
                     showFilters
-                    ? 'bg-primary text-white border-primary'
+                    ? 'bg-appPrimary text-white border-appPrimary'
                     : 'bg-bgPri border-borderPri text-textPri hover:bg-bgHoverPri'
                 }`}
                 >
@@ -309,7 +309,7 @@ export default function ProductsPage() {
                     <select
                         value={selectedCategory}
                         onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="w-full px-3 py-2 bg-bgPri border border-borderPri rounded-lg text-textSec focus:outline-none focus:ring-2 focus:ring-primary/50"
+                        className="w-full px-3 py-2 bg-bgPri border border-borderPri rounded-lg text-textSec focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                     >
                         {categories.map((cat) => (
                         <option key={cat} value={cat}>
@@ -327,7 +327,7 @@ export default function ProductsPage() {
                     <select
                         value={selectedStatus}
                         onChange={(e) => setSelectedStatus(e.target.value)}
-                        className="w-full px-3 py-2 bg-bgPri border border-borderPri rounded-lg text-textSec focus:outline-none focus:ring-2 focus:ring-primary/50"
+                        className="w-full px-3 py-2 bg-bgPri border border-borderPri rounded-lg text-textSec focus:outline-none focus:ring-2 focus:ring-appPrimary/50"
                     >
                         {statuses.map((status) => (
                         <option key={status} value={status}>
@@ -345,7 +345,7 @@ export default function ProductsPage() {
                         setSelectedCategory('all')
                         setSelectedStatus('all')
                     }}
-                    className="mt-3 flex items-center gap-1 text-sm text-primary hover:text-primary/80 transition-colors"
+                    className="mt-3 flex items-center gap-1 text-sm text-appPrimary hover:text-appPrimary/80 transition-colors"
                     >
                     <IconX size={16} />
                     Clear all filters
@@ -357,7 +357,7 @@ export default function ProductsPage() {
 
         {/* Bulk Actions */}
         {selectedProducts.length > 0 && (
-            <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 mb-6 flex items-center justify-between">
+            <div className="bg-appPrimary/10 border border-appPrimary/20 rounded-lg p-4 mb-6 flex items-center justify-between">
                 <p className="text-textSec font-medium">
                 {selectedProducts.length} product{selectedProducts.length > 1 ? 's' : ''} selected
                 </p>
@@ -402,7 +402,7 @@ export default function ProductsPage() {
                         Category
                     </th>
                     <th
-                        className="px-4 py-3 text-left text-textPri text-sm font-semibold cursor-pointer hover:text-primary transition-colors"
+                        className="px-4 py-3 text-left text-textPri text-sm font-semibold cursor-pointer hover:text-appPrimary transition-colors"
                         onClick={() => toggleSort('price')}
                     >
                         <div className="flex items-center gap-1">
@@ -413,7 +413,7 @@ export default function ProductsPage() {
                         </div>
                     </th>
                     <th
-                        className="px-4 py-3 text-left text-textPri text-sm font-semibold cursor-pointer hover:text-primary transition-colors"
+                        className="px-4 py-3 text-left text-textPri text-sm font-semibold cursor-pointer hover:text-appPrimary transition-colors"
                         onClick={() => toggleSort('stock')}
                     >
                         <div className="flex items-center gap-1">
@@ -424,7 +424,7 @@ export default function ProductsPage() {
                         </div>
                     </th>
                     <th
-                        className="px-4 py-3 text-left text-textPri text-sm font-semibold cursor-pointer hover:text-primary transition-colors"
+                        className="px-4 py-3 text-left text-textPri text-sm font-semibold cursor-pointer hover:text-appPrimary transition-colors"
                         onClick={() => toggleSort('sales')}
                     >
                         <div className="flex items-center gap-1">
@@ -501,10 +501,10 @@ export default function ProductsPage() {
                         <td className="px-4 py-4">
                         <div className="flex items-center justify-end gap-2">
                             <button className="p-2 hover:bg-bgPri rounded-lg transition-colors group">
-                            <IconEye size={18} className="text-textPri group-hover:text-primary" />
+                            <IconEye size={18} className="text-textPri group-hover:text-appPrimary" />
                             </button>
                             <button className="p-2 hover:bg-bgPri rounded-lg transition-colors group">
-                            <IconEdit size={18} className="text-textPri group-hover:text-primary" />
+                            <IconEdit size={18} className="text-textPri group-hover:text-appPrimary" />
                             </button>
                             <div className="relative">
                             <button
@@ -555,7 +555,7 @@ export default function ProductsPage() {
                     setSelectedCategory('all')
                     setSelectedStatus('all')
                     }}
-                    className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                    className="px-4 py-2 bg-appPrimary text-white rounded-lg hover:bg-appPrimary/90 transition-colors"
                 >
                     Clear Filters
                 </button>
@@ -573,7 +573,7 @@ export default function ProductsPage() {
                     <button className="px-3 py-1.5 border border-borderPri rounded-lg text-textPri hover:bg-bgHoverPri transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                     Previous
                     </button>
-                    <button className="px-3 py-1.5 bg-primary text-white rounded-lg">1</button>
+                    <button className="px-3 py-1.5 bg-appPrimary text-white rounded-lg">1</button>
                     <button className="px-3 py-1.5 border border-borderPri rounded-lg text-textPri hover:bg-bgHoverPri transition-colors">
                     2
                     </button>

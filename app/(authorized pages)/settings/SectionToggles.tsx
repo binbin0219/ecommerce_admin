@@ -14,7 +14,7 @@ const SectionToggles = () => {
                 <li>
                     <button type="button" 
                     className="
-                        text-left text-textSec rounded-lg hover:bg-bgHoverPri font-medium bg-primary p-3
+                        text-left text-textSec rounded-lg hover:bg-bgHoverPri font-medium bg-appPrimary p-3
                         md:w-[200px] 
                         w-full
                     ">
