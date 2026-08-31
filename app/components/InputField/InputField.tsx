@@ -26,7 +26,6 @@ const InputField = ({
     placeholder,
     min,
     max,
-    disableSpace,
     allowedTypes = ['character', 'number', 'symbol', 'space'],
     allowEmpty,
 }: Props) => {

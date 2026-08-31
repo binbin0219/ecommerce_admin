@@ -19,7 +19,8 @@ const sellerSlice = createSlice({
 export const selectSeller = (state: RootState): Seller | null => {
   if (!state.seller) return null;
 
-  // Destructure _persist to ignore it
+  // Destructure _persist (added by redux-persist) to ignore it
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { _persist, ...data } = state.seller;
 
   // If the slice was empty/null, return null

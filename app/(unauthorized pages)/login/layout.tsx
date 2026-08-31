@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Login - Blogify",
-    description: "Blogify login page",
+    title: "Login - Store Admin",
+    description: "Store admin login page",
 }
 export default function RootLayout({
     children,

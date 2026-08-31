@@ -11,15 +11,16 @@ export type DataTableHeaderType =
     | 'date'
     | 'custom';
 
-export type DataTableHeader<ItemType = any> = {
+export type DataTableHeader<ItemType = Record<string, unknown>> = {
     name: string;
     key: string;
     type?: DataTableHeaderType;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     render?: (value: any, item: ItemType) => React.ReactNode;
 };
 
 type Props<ItemType> = {
-    headers: DataTableHeader[]
+    headers: DataTableHeader<ItemType>[]
     items: ItemType[]
     onEdit?: (item: ItemType) => void;
     onDelete?: (item: ItemType) => void;
@@ -32,6 +33,7 @@ export default function DataTable<ItemType>({
     onDelete,
 }: Props<ItemType>) {
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function formatValue(type: DataTableHeaderType | undefined, value: any) {
         if (value == null) return '-';
 

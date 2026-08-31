@@ -2,7 +2,7 @@
 
 import api from '@/lib/api-agent';
 import { Seller } from '@/lib/models/Seller';
-import { useAppDispatch, useUtilsDispatch } from '@/redux/hooks';
+import { useUtilsDispatch } from '@/redux/hooks';
 import { hideLoader, showLoader } from '@/redux/slices/loaderSlice';
 import { setSeller } from '@/redux/slices/sellerSlice';
 import { store } from '@/redux/store';
@@ -198,16 +198,6 @@ export default function SignInPage() {
             >
               Sign In
             </button>
-          </div>
-
-          {/* Sign Up Link */}
-          <div className="mt-6 text-center">
-            <p className="text-textPri">
-              Don't have an account?{' '}
-              <a href="/signup" className="text-appPrimary hover:underline font-medium">
-                Create one
-              </a>
-            </p>
           </div>
         </div>
 

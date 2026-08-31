@@ -6,8 +6,7 @@ import DynamicTooltip from './Tooltip/DynamicToolTip';
 import { DropdownItem } from './Dropdown/DropdownItem/DropdownItem';
 
 const ThemeToggle = () => {
-    const themes = ['dark', 'light', 'system'] as const;
-    type Theme = typeof themes[number];
+    type Theme = 'dark' | 'light' | 'system';
     const themeIcons: Record<Theme, ReactElement> = {
         light: <IconSun/>,
         dark: <IconMoon/>,
